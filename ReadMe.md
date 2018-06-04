@@ -3,7 +3,7 @@
 ## Usage Instructions
 
 1. Create contents using .md files in the pages folder. Use normal markdown format for your page contents.
-2. The index.md page is the homepage for the website. Costomise it as you would create a README.md file.
+2. The index.md page is the homepage for the website. Customise it as you would create a README.md file.
 3. If using pdf or images upload them to the assets folder.
 4. DO NOT erase or mess with any of the other folders and/or files without consulting with the organisation, as they are necessary for the website structure, layout and integrity.
 
