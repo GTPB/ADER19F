@@ -1,11 +1,9 @@
 ---
-title: "Introduction to edgeR GLMs"
-author: Daniel Neves and Daniel Sobral
-date: "October 10, 2018"
-output: 
-  html_document: 
-    keep_md: yes
+layout: page
+title: Introduction to edgeR GLMs
 ---
+
+# Suggested solution - Introduction to edgeR GLMs
 
 Here we demonstrate the use of *edgeR* to perform a differential expression analysis using data from Tuch *et al.* ([PLOS](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009317)) as detailed in the edgeR manual.
 
@@ -13,7 +11,7 @@ The data is a set of RNA-seq samples of oral squamous cell carcinomas and matche
 
 We will use *edgeR* to do a differential expression analysis of Tumor vs Non-Tumor samples. We will start with a simple pairwise comparison of the Tumor and Non-Tumor samples, and then repeat the analysis adding the patient pairing information to the model design.
 
-# Load the count data
+## Load the count data
 
 We start by importing the counts table into R using the `read.delim` function. Other functions to import tables include `read.table` and `read.csv`. We also specify that the values in the tables are separated by a TAB. You can type `?read.delim` in the R console to display the documentation of the function.
 
@@ -78,7 +76,7 @@ rawcounts <- rawdata[, 2:7]
 genes <- rawdata[, 1]
 ```
 
-# Simple pairwise differential expression analysis with edgeR GLMs
+## Simple pairwise differential expression analysis with edgeR GLMs
 
 We need to import edgeR into the R environment.
 
