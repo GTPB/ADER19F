@@ -201,7 +201,7 @@ head(result)
 write.table(result, file = "edgeR_Tuch_Tumor_vs_NonTumor.csv", sep="\t", row.names = FALSE)
 ```
 
-# A more complex design: adding patient pairing information
+## A more complex design: adding patient pairing information
 
 Recall that tumor and non-samples were collected from 3 patients. Until now we have ignored this information in our design. Here we repeat the analysis by adding the sample pairing information to our model design, that will allow us to adjust for differences between patients.
 
