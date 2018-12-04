@@ -11,7 +11,7 @@ Here we will explore some of the potential of *edgeR* to perform differential ex
 
 
 In this study the authors studied evolution of gene expression during lactogenesis. The data is a set of RNA-seq samples of two different tissues (basal and luminal) in the mammary gland, at three different time points (virgin, pregnant and lactating). 
-
+<br/>
 
 ## Load the count data
 
@@ -128,7 +128,7 @@ metadata
 ## 11     LE        L  lactate    1
 ## 12     LF        L  lactate    1
 ```
-
+<br/>
 
 **Question**: Do you see a potential issue in the metadata, regarding the experimental design?
 <details><summary><b>Click Here to see the answer</b></summary>
@@ -223,7 +223,7 @@ table(topgenes$table$FDR<0.05)
 ## FALSE  TRUE 
 ## 17517  9662
 ```
-
+<br/>
 
 **Question**: For how many different genes did the GLM model consider the variable CellType significant (the differentially expressed genes we're looking for)?
 <details><summary><b>Click Here to see the answer</b></summary>
@@ -289,6 +289,7 @@ table(topgenes$table$FDR<0.05)
 ## FALSE  TRUE 
 ## 15885 11294
 ```
+<br/>
 
 **Question**: How many genes do you get now?
 <details><summary><b>Click Here to see the answer</b></summary>
@@ -297,6 +298,7 @@ Even more genes: 11294!
 <br/>
 
 What about the status of the mouse? In this case, we have three values (virgin, pregnant, lactating). 
+<br/>
 
 **Task**: Make a design matrix to test status, controlling for cell type.
 <details><summary><b>Click Here to see the answer</b></summary>
@@ -450,6 +452,7 @@ table(topgenes$table$FDR<0.05)
 ```
 </details>
 <br/>
+
 
 Now we need to create new variables to test if they are different from zero. For example, to see genes differentially expressed between virgin and pregnant in Luminal cells:
 
