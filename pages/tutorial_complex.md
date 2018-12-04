@@ -556,11 +556,9 @@ table(topgenes$table$FDR<0.05)
 
 
 **Task**: Using the code above as an example, try to replicate the paired Tumour/Normal analysis from Tuch et al, using edgeR. You can find the counts table in the complex folder.
-<details><summary><b>Click Here to see a suggested solution</b></summary>
-  
+ 
 [suggested solution](tutorial2.md)<a id="solution"></a>.
 
-</details>
 
 <br/>
 
