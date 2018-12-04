@@ -1,8 +1,8 @@
 ---
 layout: page
-title: COURSE
-tagline: Course name
-description: Analysis of Differential Expression with RNAseq
+title: ADER18S
+tagline: Analysis of Differential Expression with RNAseq
+description: Introductory course that covers practical aspects of the analysis of differential gene expression by RNAseq
 ---
 # PUT ENTRY IMAGE HERE!!!!!
 
