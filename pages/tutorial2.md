@@ -270,5 +270,5 @@ write.table(result_paired, file = "edgeR_Tuch_Tumor_vs_NonTumor_paired.csv", sep
 
 ### Back
 
-Back to [previous page](L9.md#tutorial_complex.md).
+Back to [previous page](tutorial_complex.md#tutorial2).
 
