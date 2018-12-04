@@ -1,13 +1,9 @@
 ---
-title: "Using DESeq2 in R"
-author: Daniel Neves and Daniel Sobral
-date: "October 10, 2018"
-output: 
-  html_document: 
-    keep_md: yes
+layout: page
+title: Using DESeq2 in R
 ---
 
-# Using DESeq2 in R
+# Exercise 1 - Using DESeq2 in R 
 
 This document demonstrates how to use *DESeq2* in the *R environment* to perform a differential expression analysis using the the Trapnell datasets as an example. We will first need to tell R what samples are going to be analysed, then run the *DESeq2* pipeline and plot the results of the analysis.
 
