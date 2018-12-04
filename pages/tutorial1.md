@@ -7,15 +7,15 @@ output:
     keep_md: yes
 ---
 
-
+# Using DESeq2 in R
 
 This document demonstrates how to use *DESeq2* in the *R environment* to perform a differential expression analysis using the the Trapnell datasets as an example. We will first need to tell R what samples are going to be analysed, then run the *DESeq2* pipeline and plot the results of the analysis.
 
-# Setting up the environment
+## Setting up the environment
 
 First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type `setwd("path/to/directory")` in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
 
-# Setting up the count data and metadata
+## Setting up the count data and metadata
 
 In this example, instead of loading the sample counts ourselves, we are going to let *DESeq2* handle that for us. For this, we just need to tell *DESeq2* what files correspond to each sample. We start by setting variables to hold the list of samples we are going to analyze. We create a list of sample names, a list of sample files (where the counts are), and a list of experimental conditions, telling which samples correspond to each condition. Type the following lines in the R console and press Enter.
 
@@ -79,7 +79,7 @@ sampleTable
 ## 6 trapnell_counts_C2_R3 trapnell_counts_C2_R3.tab        C2
 ```
 
-# Running a differential expression test with DESeq2
+## Running a differential expression test with DESeq2
 
 With the sample table prepared, we are ready to run **DESeq2**. First need to import it into the R environment. This is done with the `library` command.
 
@@ -331,11 +331,11 @@ head(merged.results)
 
 </details>
 
-# Visualizing results
+## Visualizing results
 
 *DESeq2* provides several functions to visualize the results, while additional plots can be made using the extensive R graphics capabilities. Visualization can help to better understand the results, and catch potential problems in the data and analysis. We start here by reproducing the plots that we previously obtained using Galaxy.
 
-## Dispersion plot
+### Dispersion plot
 
 We can plot the *DESeq2* dispersion re-estimation procedure by typing:
 
@@ -346,7 +346,7 @@ plotDispEsts(ddsHTSeq)
 
 ![](tutorial1_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
-## P-value distribution
+### P-value distribution
 
 As a sanity check, we can inspect the distribution of p-values using the `hist` function.
 
@@ -357,7 +357,7 @@ hist(resHTSeq$pvalue, breaks=0:50/50, xlab="p value", main="Histogram of nominal
 
 ![](tutorial1_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
 
-## MA-plot
+### MA-plot
 
 To make an (unshrunken) **MA-plot**, that displays the relationship between a genes' mean expression and its fold-change between experimental conditions, type the following in the R console. 
 
@@ -386,7 +386,7 @@ plotMA(resHTSeqShrunk)
 
 ![](tutorial1_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
 
-## Volcano plot
+### Volcano plot
 
 A **Volcano plot** displays the relationship between fold-change and evidence of differential expression (represented as -log p-adusted). *DESeq2* doesn't provide a function to display a **Volcano plot**, but we can create one using R's base plot functions. In red we highlight genes differentially expressed with Padj < 0.05.
 
@@ -420,7 +420,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 
 ---
 
-## Principal component analysis (PCA)
+### Principal component analysis (PCA)
 
 *DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression. 
 
@@ -443,7 +443,7 @@ plotPCA(transformed.vsd)
 
 ![](tutorial1_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
-## Sample-to-sample correlation heatmap
+### Sample-to-sample correlation heatmap
 
 Another common visualization of high-throughput datasets is a clustered heatmap of sample-to-sample distances (or correlations). This visualization groups togheter the samples that are more similar to each other. 
 
@@ -469,7 +469,7 @@ heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale
 
 ![](tutorial1_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
 
-# Other visualizations
+## Other visualizations
 
 Here we plot the relative expression of all differentially expressed genes in the 6 samples. This figure is useful to visualize the differences in expression between samples. 
 
@@ -544,7 +544,7 @@ pheatmap(values,
 
 ![](tutorial1_files/figure-html/unnamed-chunk-25-1.png)<!-- -->
 
-# Session information
+## Session information
 
 
 ```r
