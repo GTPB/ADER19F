@@ -340,7 +340,7 @@ We can plot the *DESeq2* dispersion re-estimation procedure by typing:
 plotDispEsts(ddsHTSeq)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-15-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-15-1.png )<!-- -->
 
 ### P-value distribution
 
