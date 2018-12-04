@@ -6,10 +6,12 @@ title: Using DESeq2 in R
 # Exercise 1 - Using DESeq2 in R 
 
 This document demonstrates how to use *DESeq2* in the *R environment* to perform a differential expression analysis using the the Trapnell datasets as an example. We will first need to tell R what samples are going to be analysed, then run the *DESeq2* pipeline and plot the results of the analysis.
+<br/>
 
 ## Setting up the environment
 
 First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type `setwd("path/to/directory")` in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
+<br/>
 
 ## Setting up the count data and metadata
 
@@ -74,6 +76,7 @@ sampleTable
 ## 5 trapnell_counts_C2_R2 trapnell_counts_C2_R2.tab        C2
 ## 6 trapnell_counts_C2_R3 trapnell_counts_C2_R3.tab        C2
 ```
+<br/>
 
 ## Running a differential expression test with DESeq2
 
@@ -283,6 +286,7 @@ head(merged.results)
 ## 5 0.05527698 0.6446372
 ## 6 0.59430768 0.9992327
 ```
+<br/>
 
 **Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the `merged.results` table by p.value?
 
@@ -326,10 +330,12 @@ head(merged.results)
 ```
 
 </details>
+<br/>
 
 ## Visualizing results
 
 *DESeq2* provides several functions to visualize the results, while additional plots can be made using the extensive R graphics capabilities. Visualization can help to better understand the results, and catch potential problems in the data and analysis. We start here by reproducing the plots that we previously obtained using Galaxy.
+<br/>
 
 ### Dispersion plot
 
@@ -341,6 +347,7 @@ plotDispEsts(ddsHTSeq)
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-15-1.png )<!-- -->
+<br/>
 
 ### P-value distribution
 
@@ -352,6 +359,7 @@ hist(resHTSeq$pvalue, breaks=0:50/50, xlab="p value", main="Histogram of nominal
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-16-1.png)<!-- -->
+<br/>
 
 ### MA-plot
 
@@ -381,6 +389,7 @@ plotMA(resHTSeqShrunk)
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-18-1.png)<!-- -->
+<br/>
 
 ### Volcano plot
 
@@ -415,6 +424,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 </details>
 
 ---
+<br/>
 
 ### Principal component analysis (PCA)
 
@@ -438,6 +448,7 @@ plotPCA(transformed.vsd)
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-21-1.png)<!-- -->
+<br/>
 
 ### Sample-to-sample correlation heatmap
 
@@ -464,6 +475,7 @@ heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-23-1.png)<!-- -->
+<br/>
 
 ## Other visualizations
 
@@ -539,6 +551,7 @@ pheatmap(values,
 ```
 
 ![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial1_files/unnamed-chunk-25-1.png)<!-- -->
+<br/>
 
 ## Session information
 
