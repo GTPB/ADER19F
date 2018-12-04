@@ -1,13 +1,11 @@
----
-title: "tutorial_complex"
-author: "Daniel Sobral and Daniel Neves"
-date: "6 October 2018"
-output: 
-  html_document: 
-    keep_md: yes
+----
+layout: page
+title: Using edgeR in R
 ---
 
-# Introduction
+# Exercise 2 - Using edgeR in R
+
+## Introduction
 
 Here we will explore some of the potential of *edgeR* to perform differential expression analysis in more complex settings. We will be using data from [Fu et al., 2015](https://www.ncbi.nlm.nih.gov/pubmed/25730472). You can obtain the raw data, and some processed data like gene counts from [here](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450). For your convenience, these have already been provided 
 
@@ -15,7 +13,7 @@ Here we will explore some of the potential of *edgeR* to perform differential ex
 In this study the authors studied evolution of gene expression during lactogenesis. The data is a set of RNA-seq samples of two different tissues (basal and luminal) in the mammary gland, at three different time points (virgin, pregnant and lactating). 
 
 
-# Load the count data
+## Load the count data
 
 We start by importing the counts table into R. It contains the gene identifier (in this case it is not an Ensembl identifier, but [Entrez gene ID](https://www.ncbi.nlm.nih.gov/gene)), the gene length, and then the counts for each sample.
 
