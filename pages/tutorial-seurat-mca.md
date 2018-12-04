@@ -57,7 +57,7 @@ x <- sort(umi.per.barcode, decreasing = TRUE)
 plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-3-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-3-1.png)<!-- -->
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
 
@@ -73,7 +73,7 @@ plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 abline(h=500, lty="dashed")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-4-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 (num.barcodes <- length(which(x >= 500)))
@@ -122,13 +122,13 @@ Next we inspect the distributions of total counts per cell, and number of genes 
 VlnPlot(sobj, features.plot = c("nUMI", "nGene"), point.size.use = 0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-7-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$nGene, pch=20, cex=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-7-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-7-2.png)<!-- -->
 
 **Question**: Notice that the above plot seems to grow linearly. What does it suggest?
 
@@ -151,13 +151,13 @@ sobj <- AddMetaData(sobj, metadata = percent.mito, col.name = "percent.mito")
 VlnPlot(sobj, features.plot = c("nUMI", "nGene", "percent.mito"))
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-8-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-8-1.png)<!-- -->
 
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$percent.mito, pch=20, cex=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-8-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-8-2.png)<!-- -->
 
 A few cells display higher than 10% abundance of mitochondrial RNA. These cells also appear to have lower UMI counts than average.
 
@@ -255,7 +255,7 @@ sobj <- FindVariableGenes(sobj, mean.function = ExpMean, dispersion.function = L
 ## 'gridsize'
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/vargenes-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/vargenes-1.png)<!-- -->
 
 ```r
 length(sobj@var.genes)
@@ -276,13 +276,13 @@ highest.mean <- head(rownames(hvginfo)[ order(-hvginfo$gene.mean) ])
 VlnPlot(sobj, features.plot = highest.dispersion, point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-10-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-10-1.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-10-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-10-2.png)<!-- -->
 
 ## Dimensional reduction
 
@@ -317,7 +317,7 @@ p2 <- PCAPlot(object = sobj, dim.1 = 2, dim.2 = 3, do.return=TRUE) + theme(legen
 grid.arrange(p1, p2, ncol=2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-11-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-11-1.png)<!-- -->
 
 The next question is how many of the top principal components (PCs) are we going to use for the purpose of clustering the cells. The first thing to look at is the PCA scree-plot, showing the proportion of variance explained by each component. We are looking for a "knee" in the plot, where additional PCs do not bring much more new information.
 
@@ -328,7 +328,7 @@ For this purpose, *Seurat* provides the function `PCElbowPlot`, that displays th
 PCElbowPlot(sobj, num.pc = 40)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-12-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-12-1.png)<!-- -->
 
 We can also calculate the proportion of variance ourselves and plot it (the two representations are proportional to each other).
 
@@ -339,7 +339,7 @@ props <- eigs / sum(eigs)
 plot(props, ylab="Proportion of variance", xlab="Principal Component")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-13-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-13-1.png)<!-- -->
 
 **Question**: Based on the above plots, how many principal components would you consider for further analysis.
 
@@ -372,7 +372,7 @@ p2 <- PCAPlot(sobj, dim.1 = 2, dim.2 = 3, do.return=TRUE)
 grid.arrange(p1, p2, ncol=2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-14-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-14-1.png)<!-- -->
 
 ## Visualizing clusters with a t-SNE plot
 
@@ -397,7 +397,7 @@ sobj <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=30)
 TSNEPlot(sobj, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/figure-html/tsne-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/figure-html/tsne-1.png)<!-- -->
 
 **Exercise**: Modify the commands above to try different values of the `perplexity` argument. E.g. 5, 10, 20, 50, ...
 
@@ -409,28 +409,28 @@ tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=5)
 TSNEPlot(tmp, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-15-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-15-1.png)<!-- -->
 
 ```r
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=10)
 TSNEPlot(tmp, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-15-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-15-2.png)<!-- -->
 
 ```r
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=20)
 TSNEPlot(tmp, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-15-3.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-15-3.png)<!-- -->
 
 ```r
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=50)
 TSNEPlot(tmp, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-15-4.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-15-4.png)<!-- -->
 
 </details>
 
@@ -473,7 +473,7 @@ top.markers <- do.call(rbind, lapply(split(markers, markers$cluster), head))
 DoHeatmap(sobj, genes.use = top.markers$gene, slim.col.label = TRUE, remove.key = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-19-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-19-1.png)<!-- -->
 
 Or we can investigate the expression of specific genes. Below we plot the expression of the top 6 markers for cluster 0 as violin plots, and by projecting the expression of these genes on a t-SNE plot.
 
@@ -484,13 +484,13 @@ markers.0 <- markers[ which(markers$cluster == 0), ]
 VlnPlot(sobj, features.plot = head(markers.0$gene), point.size.use=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-20-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-20-1.png)<!-- -->
 
 ```r
 FeaturePlot(sobj, features.plot = head(markers.0$gene), cols.use = c("grey", "blue"), reduction.use = "tsne")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-20-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-20-2.png)<!-- -->
 
 **Exercise**: Modify the commands above to plot the top markers of cluster 7.
 
@@ -502,13 +502,13 @@ markers.7 <- markers[ which(markers$cluster == 7), ]
 FeaturePlot(sobj, features.plot = head(markers.7$gene), cols.use = c("grey", "blue"), reduction.use = "tsne")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-21-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-21-1.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = head(markers.7$gene), point.size.use=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-21-2.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-21-2.png)<!-- -->
 
 </details>
 
@@ -640,7 +640,7 @@ markers.7.12 <- FindMarkers(sobj, ident.1 = 7, ident.2 = 12, min.pct=0.25)
 FeaturePlot(sobj, features.plot = c("Dcn", "Cxcl14"), cols.use = c("grey", "blue"), reduction.use = "tsne")
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-24-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-24-1.png)<!-- -->
 
 It appears that most differences between clusters 0, 2, 3 and 4 are due to small differences in the amount of mitochondrial RNA. Clusters 7 and 12 however display a larger amount of differentially expressed genes, and might indeed represent different cell populations.
 
@@ -666,7 +666,7 @@ And plot the t-SNE again to check the result.
 TSNEPlot(sobj, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-26-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-26-1.png)<!-- -->
 
 Finally, we run the `FindAllMarkers` function again to account for the new clustering.
 
@@ -687,7 +687,7 @@ top.markers <- do.call(rbind, lapply(split(markers, markers$cluster), head))
 DoHeatmap(sobj, genes.use = top.markers$gene, slim.col.label = TRUE, remove.key = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-29-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-29-1.png)<!-- -->
 
 ## Annotation of cell clusters
 
@@ -700,14 +700,14 @@ Some cells have well known markers. For example, the gene Ms4a1 is a marker for 
 FeaturePlot(sobj, features.plot = c("Il7r", "Cd8a", "Ms4a1"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-30-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-30-1.png)<!-- -->
 
 
 ```r
 VlnPlot(sobj, features.plot = c("Il7r", "Cd8a", "Ms4a1"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-31-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-31-1.png)<!-- -->
 
 Through the inspection of the top markers identified in each cluster one may begin manually annotating remaining clusters. Tomorrow, we will see how functional analysis can also help in the process of identifying cell types using the full set of marker genes in each cluster.
 
@@ -729,7 +729,7 @@ TSNEPlot(sobj, group.by="Annotation", do.label=TRUE, do.return=TRUE) + theme(leg
 ## Warning: Removed 1 rows containing missing values (geom_text).
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-32-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-32-1.png)<!-- -->
 
 We can compare our clustering result with the annotated cells by tabulating cluster cell assignments. 
 
@@ -742,7 +742,7 @@ ggplot(mdf, aes(x=factor(Cluster), y=Annotation)) +
   geom_text(aes(label=Cells, alpha=Cells>0))
 ```
 
-![](tutorial-seurat-mca_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-33-1.png)<!-- -->
 
 Some of the clusters defined in the study are sub-populations of the same type of cells, differing only in the expression of a few genes. Below, we simplify these cluster assignments.
 
@@ -757,7 +757,7 @@ TSNEPlot(sobj, group.by="AnnotationSimple", do.label=TRUE, do.return=TRUE) + the
 ## Warning: Removed 1 rows containing missing values (geom_text).
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-34-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-34-1.png)<!-- -->
 
 We can compare our clustering result with the annotated cells by tabulating cluster cell assignments. 
 
@@ -770,7 +770,7 @@ ggplot(mdf, aes(x=factor(Cluster), y=Annotation)) +
   geom_text(aes(label=Cells, alpha=Cells>0))
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-35-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-35-1.png)<!-- -->
 
 We can also reproduce figure 4D.
 
@@ -780,7 +780,7 @@ genes <- c("Sftpc", "Vwf", "Dcn", "Cxcl14")
 FeaturePlot(sobj, features.plot = genes, cols.use=c("grey", "red"), no.legend = FALSE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/assets/tutorial-seurat-mca_files/unnamed-chunk-36-1.png)<!-- -->
+![](https://github.com/maccardoso/ADER18S/blob/assets/tutorial-seurat-mca_files/unnamed-chunk-36-1.png)<!-- -->
 
 ## Session Information
 
