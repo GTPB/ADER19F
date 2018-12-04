@@ -265,5 +265,10 @@ abline(h=c(-1, 1), col="blue")
 result_paired <- as.data.frame(topTags(lrt, n = nrow(rawcounts)))
 write.table(result_paired, file = "edgeR_Tuch_Tumor_vs_NonTumor_paired.csv", sep="\t", row.names = FALSE)
 ```
+<br/>
 
+
+### Back
+
+Back to [previous page](tutorial_complex.md).
 
