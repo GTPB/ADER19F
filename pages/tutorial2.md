@@ -10,6 +10,7 @@ Here we demonstrate the use of *edgeR* to perform a differential expression anal
 The data is a set of RNA-seq samples of oral squamous cell carcinomas and matched normal tissue from three patients that were previously quantified into raw counts. 
 
 We will use *edgeR* to do a differential expression analysis of Tumor vs Non-Tumor samples. We will start with a simple pairwise comparison of the Tumor and Non-Tumor samples, and then repeat the analysis adding the patient pairing information to the model design.
+<br/>
 
 ## Load the count data
 
@@ -75,6 +76,8 @@ For convenience, we separate the table in two: one containing the counts for all
 rawcounts <- rawdata[, 2:7]
 genes <- rawdata[, 1]
 ```
+<br/>
+
 
 ## Simple pairwise differential expression analysis with edgeR GLMs
 
@@ -200,6 +203,8 @@ head(result)
 ```r
 write.table(result, file = "edgeR_Tuch_Tumor_vs_NonTumor.csv", sep="\t", row.names = FALSE)
 ```
+<br/>
+
 
 ## A more complex design: adding patient pairing information
 
