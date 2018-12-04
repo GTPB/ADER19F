@@ -431,4 +431,4 @@ sessionInfo()
 
 ### Back
 
-Back to [first page](L09.md#seurat-pbmc4k).
+Back to [previous page](L09.md#seurat-pbmc4k).
