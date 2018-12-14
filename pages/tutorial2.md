@@ -119,7 +119,7 @@ After normalization, we can now produce a Multidimensional Scaling Plot (MDS) us
 plotMDS(y)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial2_files/unnamed-chunk-6-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-6-1.png)<!-- -->
 
 We now define the design of our comparison. We want to compare Tumor to Non-Tumor samples. So we first create a variable indicating which samples are from normal (N) or tumor (T) tissue. Then we define the design for the genewise linear models. Here, the `~ Tissue` design is equivalent to a simple pairwise test of Tumor vs Non-tumor (i.e. the model only takes into account the originating tissue).
 
@@ -179,7 +179,7 @@ plotMD(lrt)
 abline(h=c(-1, 1), col="blue")
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial2_files/unnamed-chunk-10-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-10-1.png)<!-- -->
 
 We can retrieve a table with all the results of differential expression using the `topTags` function. We also save it to a file so we can latter open it in Excel.
 
@@ -264,7 +264,7 @@ plotMD(lrt)
 abline(h=c(-1, 1), col="blue")
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial2_files/unnamed-chunk-12-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-12-1.png)<!-- -->
 
 ```r
 result_paired <- as.data.frame(topTags(lrt, n = nrow(rawcounts)))
