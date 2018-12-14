@@ -60,13 +60,13 @@ Check the distributions of UMI, gene counts and percent of mitochondrial RNA, an
 VlnPlot(sobj, features.plot = c("nUMI", "nGene"))
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-4-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$nGene, pch=20, cex=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-4-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-4-2.png)<!-- -->
 
 
 ```r
@@ -77,13 +77,13 @@ sobj <- AddMetaData(sobj, metadata = percent.mito, col.name = "percent.mito")
 VlnPlot(sobj, features.plot = c("nUMI", "nGene", "percent.mito"))
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-5-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$percent.mito, pch=20, cex=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-5-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-5-2.png)<!-- -->
 
 
 ```r
@@ -122,7 +122,7 @@ sobj <- FindVariableGenes(sobj, mean.function = ExpMean, dispersion.function = L
                           x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/vargenes-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/vargenes-1.png)<!-- -->
 
 ```r
 length(sobj@var.genes)
@@ -141,13 +141,13 @@ highest.mean <- head(rownames(hvginfo)[ order(-hvginfo$gene.mean) ])
 VlnPlot(sobj, features.plot = highest.dispersion, point.size.use=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-7-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-7-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-2.png)<!-- -->
 
 </details>
 
@@ -184,27 +184,27 @@ p2 <- PCAPlot(object = sobj, dim.1 = 2, dim.2 = 3, do.return=TRUE) + theme(legen
 grid.arrange(p1, p2, ncol=2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-8-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-8-1.png)<!-- -->
 
 
 ```r
 PCElbowPlot(sobj, num.pc = 40)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-9-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-9-1.png)<!-- -->
 
 
 ```r
 PCHeatmap(sobj, pc.use = 1:15, cells.use = 500, do.balanced = TRUE, label.columns = FALSE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-10-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-1.png)<!-- -->
 
 ```r
 VizPCA(sobj, pcs.use = 1:15, do.balanced = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-10-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-2.png)<!-- -->
 
 
 ```r
@@ -232,7 +232,7 @@ sobj <- RunTSNE(sobj, dims.use = 1:15, do.fast = TRUE, perplexity = 30)
 TSNEPlot(sobj, do.label = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/clusters-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/clusters-1.png)<!-- -->
 
 </details>
 
@@ -266,7 +266,7 @@ top.markers <- do.call(rbind, lapply(split(markers, markers$cluster), head))
 DoHeatmap(sobj, genes.use = top.markers$gene, slim.col.label = TRUE, remove.key = TRUE)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-13-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-13-1.png)<!-- -->
 
 </details>
 
@@ -292,62 +292,62 @@ Use the `VlnPlot` and `FeaturePlot` functions to examine the expresssion of the 
 VlnPlot(sobj, features.plot = c("IL7R", "MS4A1"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-14-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-1.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = c("CD14", "LYZ", "FCGR3A", "MS4A7"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-14-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-2.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = c("MS4A1"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-14-3.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-3.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = c("FCER1A", "CST3"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-14-4.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-4.png)<!-- -->
 
 ```r
 VlnPlot(sobj, features.plot = c("PPBP"), point.size.use=0.2)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-14-5.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-5.png)<!-- -->
 
 
 ```r
 FeaturePlot(sobj, features.plot = c("IL7R", "MS4A1"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-15-1.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-1.png)<!-- -->
 
 ```r
 FeaturePlot(sobj, features.plot = c("CD14", "LYZ", "FCGR3A", "MS4A7"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-15-2.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-2.png)<!-- -->
 
 ```r
 FeaturePlot(sobj, features.plot = c("MS4A1"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-15-3.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-3.png)<!-- -->
 
 ```r
 FeaturePlot(sobj, features.plot = c("FCER1A", "CST3"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-15-4.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-4.png)<!-- -->
 
 ```r
 FeaturePlot(sobj, features.plot = c("PPBP"), cols.use=c("grey", "red"), pt.size=0.5)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/exercise-seurat-pbmc4k_files/unnamed-chunk-15-5.png)<!-- -->
+![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-5.png)<!-- -->
 
 </details>
 
