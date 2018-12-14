@@ -94,7 +94,7 @@ normcounts<-cpm(y, normalized.lib.sizes = T)
 plotMDS(y)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial_complex_files/unnamed-chunk-2-1.png)<!-- -->
+![](./images/tutorial_complex_files/unnamed-chunk-2-1.png)<!-- -->
 
 **Question**: What does this global overview tell you?
 <details><summary><b>Click Here to see the answer</b></summary>
@@ -194,7 +194,7 @@ y <- estimateDisp(y, design, robust=TRUE)
 plotBCV(y)
 ```
 
-![](https://github.com/maccardoso/ADER18S/blob/master/assets/tutorial_complex_files/unnamed-chunk-5-1.png)<!-- -->
+![](./images/tutorial_complex_files/unnamed-chunk-5-1.png)<!-- -->
 
 Next, edgeR fits the GLM model for each gene (like we fit linear models using regression and least squeares, but with more sophisticated iterative methods).
  
