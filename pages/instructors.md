@@ -6,7 +6,7 @@ description: ADER18S Course instructors description
 ## Daniel Sobral
 **Affiliation:** Instituto Gulbenkian de Ciência, Oeiras, PT
 
-  <img src="./images/Instructors/David_Sobral.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
+  <img src="./images/instructors/David_Sobral.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
 
 **Daniel Sobral** graduated in Informatics Engineering from Instituto Superior Técnico (Lisbon, Portugal). His interest in Biology led him to join the Gulbenkian PhD programme, and conduct his doctoral studies in Bioinformatics at the Université Aix-Marseille (France) with Dr. Patrick Lemaire. 
 
@@ -19,7 +19,7 @@ In 2012 he moved back to Portugal, where he joined the Bioinformatics Unit at th
 ## Daniel Faria
 **Affiliation:** Instituto Gulbenkian de Ciência, Oeiras, PT
 
- <img src="./images/Instructors/David_Faria.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
+ <img src="./images/instructors/David_Faria.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
  
 **Daniel Faria** graduated in Biological Engineering from Instituto Superior Técnico (Lisboa, Portugal). His interest in Bioinformatics led him to pursue a PhD on that topic, at the Faculdade de Ciências da Universidade de Lisboa (Lisboa, Portugal) under Dr. André Falcão and Dr. António Ferreira, focusing on automated protein function prediction and on the usage and structure of the Gene Ontology. He developed applications for computing semantic similarity between genes and for enrichment analysis, based on the Gene Ontology. 
 
@@ -33,7 +33,7 @@ He remained at the Faculdade de Ciências as a post-doc to pursue this research 
 ## Daniel Neves
 **Affiliation:** Instituto Gulbenkian de Ciência, Oeiras, PT
 
-<img src="./images/Instructors/David_Neves.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
+<img src="./images/instructors/David_Neves.jpg" height="220" width="170" align="left" style="margin-right: 3%; margin-bottom: 0.3em;">
 
 **Daniel Neves** is a bioinformatics specialist at the Bioinformatics Unit (UBI) at IGC. He has a bachelor's degree in Computer Engineering, and a MSc degree in Computational Biology from Faculdade de Ciências da Universidade de Lisboa (Lisboa, Portugal). In his MSc project, that was supervised by Luisa Figueiredo and Nuno Barbosa-Morais at Instituto de Medicina Molecular (Lisboa, Portugal), he used RNA-seq to unveil the circadian clock of Trypanosoma brucei, an ancient human pathogen. 
 
