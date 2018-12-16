@@ -53,7 +53,8 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Check results using FastQC on filtered data
 </br>
 
-#### LO 5: Generate alignments of processed reads against a reference genome
+
+#### 5: Generate alignments of processed reads against a reference genome
 + **5.1 -** [What is a reference genome, versioning and where to obtain genomes](pages/L05.md#LO5.1)
 		
       Are genomes constant?
@@ -69,6 +70,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Run hisat2 in an example dataset
       What is the SAM/BAM format
 </br>
+
 
 ### Day 2
 
@@ -100,6 +102,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Interpret results from salmon
 </br>
 
+
 ### Day 3
 #### 8: Generate lists of differentially expressed genes, at least for a simple pairwise comparison
 + **8.1 -** [Execute a pairwise differential expression analysis](pages/L08.md#LO8.1)
@@ -121,6 +124,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Use edgeR to perform more complex analysis such as ANOVA-like all versus all comparisons
 </br>
 
+
 ### Day 4
 #### 9: Understand specificies of differential gene expression in single-cell RNAseq
 + **9.1 -** [Overview of Single Cell RNA-seq (scRNA-seq)](pages/L09.md#LO9.1)
@@ -139,6 +143,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Interpreting PCA plots and dimensionality reduction
       Indentify genes that distinguish the different groups
 </br>
+
 
 ### Day 5 
 #### 10: Perform simple functional enrichment analysis and understand the concepts involved
