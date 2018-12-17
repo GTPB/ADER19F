@@ -87,7 +87,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		
       Interpret general alignment statistics such as percentage of aligned reads
       Check the reports to assess RNA integrity and diversity
-</br>
+
 
 #### 7 - Generate tables of counts
 + **7.1 -** [The process of generating gene counts from genome aligments](pages/L07.md#LO7.1)
