@@ -18,7 +18,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 ### Day 1
 
 #### 1 - Plan your experiment using NGS technologies:
-+ **1.1 -** [List possibilities and limitations of NGS sequencing technologies](pages/L01_L02.md#LO1)
++ **1.1 -** [List possibilities and limitations of NGS sequencing technologies](pages/L01_L02.md)
 
       What choices do you have when sending your samples to the sequencing facility
 
@@ -32,7 +32,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 
 #### 3 - Assess the general quality of the raw data from the sequencing facility
-+ **3.1 -** [Interpret what are fastq files and what is their content](pages/L03.md#LO3.1)
++ **3.1 -** [Interpret what are fastq files and what is their content](pages/L03.md)
 		    
       What information is in fastq files, and how is it organized
     
@@ -43,7 +43,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 
 #### 4 - Do simple processing operations in the raw data to improve its quality
-+ **4.1 -** [Use  trimmomatic to remove low quality bases from your reads](pages/L04.md#LO4.1)
++ **4.1 -** [Use  trimmomatic to remove low quality bases from your reads](pages/L04.md)
 		    
       Use trimmomatic to filter/trim low quality bases from your reads
 
@@ -55,7 +55,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 
 #### 5 - Generate alignments of processed reads against a reference genome
-+ **5.1 -** [What is a reference genome, versioning and where to obtain genomes](pages/L05.md#LO5.1)
++ **5.1 -** [What is a reference genome, versioning and where to obtain genomes](pages/L05.md)
 		
       Are genomes constant?
       Obtain genome fasta from Ensembl
@@ -75,7 +75,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 ### Day 2
 
 #### 6 - Assess the general quality of the alignments and detect possible problems
-+ **6.1 -** [What is a reference gene annotation, versioning and where to obtain](pages/L06.md#LO6.1)
++ **6.1 -** [What is a reference gene annotation, versioning and where to obtain](pages/L06.md)
 		  
       What is the GFF/GTF format
       Obtain genome GTF from Ensembl
@@ -89,7 +89,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 
 #### 7 - Generate tables of counts
-+ **7.1 -** [The process of generating gene counts from genome aligments](pages/L07.md#LO7.1)
++ **7.1 -** [The process of generating gene counts from genome aligments](pages/L07.md)
 		
       What parameters we need to consider when counting
 
@@ -105,7 +105,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ### Day 3
 #### 8 - Generate lists of differentially expressed genes, at least for a simple pairwise comparison
-+ **8.1 -** [Execute a pairwise differential expression analysis](pages/L08.md#LO8.1)
++ **8.1 -** [Execute a pairwise differential expression analysis](pages/L08.md)
 		  
       Use Galaxy to produce differentially expressed genes with DESeq2
 
@@ -127,7 +127,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ### Day 4
 #### 9 - Understand specificies of differential gene expression in single-cell RNAseq
-+ **9.1 -** [Overview of Single Cell RNA-seq (scRNA-seq)](pages/L09.md#LO9.1)
++ **9.1 -** [Overview of Single Cell RNA-seq (scRNA-seq)](pages/L09.md)
 		  
       Specificities of single-cell RNAseq, using the Chromium system as example
       Diferences in raw data preprocessing and counting
@@ -147,7 +147,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ### Day 5 
 #### 10 - Perform simple functional enrichment analysis and understand the concepts involved
-+ **10.1 -** [How to extract meaning from a list of genes](pages/L10.md#LO10.1)
++ **10.1 -** [How to extract meaning from a list of genes](pages/L10.md#)
 
       What are functional annotations, what types exist, and where to get them
 
