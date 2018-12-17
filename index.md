@@ -25,11 +25,11 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 + **1.2 -** [Choose adequate sequencing for your biological question](pages/L01_L02.md#LO1)
 
       How do the sequencing choices influence the kind of questions you can answer
-</br>
+
 
 #### 2 - [List steps in the analysis of RNAseq differential expression experiments](pages/L01_L02.md#LO2) 
         What are the steps in RNAseq data analysis
-</br>
+
 
 #### 3 - Assess the general quality of the raw data from the sequencing facility
 + **3.1 -** [Interpret what are fastq files and what is their content](pages/L03.md#LO3.1)
@@ -40,7 +40,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		    
       Detect low quality bases in the QC reports  
       Detect sequence bias and possible presence of adaptors and other contaminants
-</br>
+
 
 #### 4 - Do simple processing operations in the raw data to improve its quality
 + **4.1 -** [Use  trimmomatic to remove low quality bases from your reads](pages/L04.md#LO4.1)
@@ -51,7 +51,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		
       Remove adaptors (eg. illumina adaptors) and unwanted sequences (eg. polyA tails) from your reads
       Check results using FastQC on filtered data
-</br>
+
 
 
 #### 5 - Generate alignments of processed reads against a reference genome
@@ -69,6 +69,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		
       Run hisat2 in an example dataset
       What is the SAM/BAM format
+
 </br>
 
 
@@ -100,6 +101,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 + **7.3 -** [Using Salmon to generate counts only with the transcriptome](pages/L07.md#LO7.3)
 		
       Interpret results from salmon
+
 </br>
 
 
@@ -123,7 +125,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Use R in Rstudio to make a pairwise comparison using DESeq2 and edgeR
       Use edgeR to perform more complex analysis such as ANOVA-like all versus all comparisons
 
-
+</br>
 
 ### Day 4
 #### 9 - Understand specificies of differential gene expression in single-cell RNAseq
@@ -142,6 +144,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Quality checking and filtering of the count table
       Interpreting PCA plots and dimensionality reduction
       Indentify genes that distinguish the different groups
+
 </br>
 
 
