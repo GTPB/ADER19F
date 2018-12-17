@@ -34,4 +34,4 @@ Basic Unix command line skills, such as being able to navigate in a directory tr
 
 ### Back
 
-Back to [first page](https://gtpb.github.io/COURSE/).
+Back to [first page](https://maccardoso.github.io/ADER18S/).
