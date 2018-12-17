@@ -170,4 +170,4 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ---
 
-The source for this course webpage is [on github](https://github.com/GTPB/Web_course_template).
+The source for this course webpage is [on github](https://github.com/maccardoso/ADER18S).
