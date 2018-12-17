@@ -38,7 +38,7 @@ He remained at the Faculdade de Ciências as a post-doc to pursue this research 
 **Daniel Neves** is a bioinformatics specialist at the Bioinformatics Unit (UBI) at IGC. He has a bachelor's degree in Computer Engineering, and a MSc degree in Computational Biology from Faculdade de Ciências da Universidade de Lisboa (Lisboa, Portugal). In his MSc project, that was supervised by Luisa Figueiredo and Nuno Barbosa-Morais at Instituto de Medicina Molecular (Lisboa, Portugal), he used RNA-seq to unveil the circadian clock of Trypanosoma brucei, an ancient human pathogen. 
 
 He has significant experience in Next Generation Sequencing (NGS) data analysis, having collaborated in the design and analysis of a wide variety of transcriptomics, epigenetics and genomics experiments. He is particularly interested in how visualization can help understand large datasets, avoid mistakes and uncover relevant information. At the IGC, he is currently responsible for providing consultancy and bioinformatics support within the BioData.pt infrastructure.
-
+<br/>
 
 
 ### Back
