@@ -147,7 +147,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ### Day 5 
 #### 10 - Perform simple functional enrichment analysis and understand the concepts involved
-+ **10.1 -** [How to extract meaning from a list of genes](pages/L10.md#)
++ **10.1 -** [How to extract meaning from a list of genes](pages/L10.md)
 
       What are functional annotations, what types exist, and where to get them
 
