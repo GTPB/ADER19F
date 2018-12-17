@@ -19,6 +19,7 @@ Course participants will go through a series of experiences that utimately lead 
 10. Perform simple functional enrichment analysis and understand the concepts behind them
 
 For this, we are providing small example datasets and exercises that participants can use to learn.
+<br/>
 
 # Pre-requisites
 
