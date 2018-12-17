@@ -69,8 +69,8 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		
       Run hisat2 in an example dataset
       What is the SAM/BAM format
-<br />
-<br />
+
+<br/><br/>
 
 ### Day 2
 
