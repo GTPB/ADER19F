@@ -68,11 +68,9 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 + **5.3 -** [Run an alignment: the SAM/BAM alignment format](pages/L05.md#LO5.3)
 		
       Run hisat2 in an example dataset
-      What is the SAM/BAM format<br />
+      What is the SAM/BAM format
 <br />
-
-
-
+<br />
 
 ### Day 2
 
