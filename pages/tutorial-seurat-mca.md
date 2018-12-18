@@ -1,7 +1,9 @@
 ---
 layout: page
 title: Analysis of Mouse Cell Atlas scRNA-seq using Seurat
-output: html_fragment
+output:
+  html_document:
+    md_extensions: +autolink_bare_uris+hard_line_breaks+ascii_identifier+tex_math_single_backslash
 ---
 
 ## Introduction
