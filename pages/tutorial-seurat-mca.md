@@ -1,9 +1,7 @@
 ---
 layout: page
-title: ADER18S - Analysis of Mouse Cell Atlas scRNA-seq using Seurat
+title: Analysis of Mouse Cell Atlas scRNA-seq using Seurat
 ---
-
-# Analysis of Mouse Cell Atlas scRNA-seq using Seurat
 
 ## Introduction
 
@@ -15,7 +13,7 @@ In this tutorial we will perform the steps necessary to go from the raw expressi
 
 ## Libraries
 
-First we load a few packages. `Seurat` is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. `gridExtra` is used to group multiple plots together in a grid.
+First we load a few packages. <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">Seurat</span> is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">gridExtra</span> is used to group multiple plots together in a grid.
 
 
 ```r
@@ -100,7 +98,7 @@ dim(mat.raw)
 ## [1] 16566  2684
 ```
 
-To use the `Seurat` package, we first need to create a *Seurat object*. This is a complex data structure that will conveniently hold all relevant information during the analysis, such as the raw count data, the normalized expressions, reduced dimensions, cluster assignments, etc...
+To use the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">Seurat</span> package, we first need to create a *Seurat object*. This is a complex data structure that will conveniently hold all relevant information during the analysis, such as the raw count data, the normalized expressions, reduced dimensions, cluster assignments, etc...
 
 When creating the *Seurat object* we can specify certain filtering criteria that will immediately be applied to the matrix. Here we specify that we only want to consider genes expressed in at least 5 cells. Aproximately 3,500 genes are discarded from the matrix.
 
@@ -241,7 +239,7 @@ sobj@data[1:10, 1:10]
 
 Housekeeping genes that are similarly expressed in all cell populations are not useful for the purpose of identifying these populations. Thus, it is often useful to select a subset of genes that display higher than average variability among cells to be used for dimensionality reduction and clustering of cells, as this will greatly speed-up the computations. 
 
-The `FindVariableGenes` from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (`y.cuttoff`). We can also set thresholds for minimum expression (`x.low.cutoff`) and maximum expression (`x.high.cutoff`).  
+The `FindVariableGenes` from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">y.cuttoff</span>). We can also set thresholds for minimum expression (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">x.low.cutoff</span>) and maximum expression (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">x.high.cutoff</span>).  
 
 
 ```r
@@ -265,7 +263,7 @@ length(sobj@var.genes)
 ## [1] 944
 ```
 
-We can check the expression of a few of these variable genes across all cells using the `VlnPlot` function. We plot the expression of the 6 variable genes with highest dispersion, and the 6 variable genes with highest mean.
+We can check the expression of a few of these variable genes across all cells using the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">VlnPlot</span> function. We plot the expression of the 6 variable genes with highest dispersion, and the 6 variable genes with highest mean.
 
 
 ```r
@@ -286,7 +284,7 @@ VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.2)
 
 ## Dimensional reduction
 
-In *Seurat*, principal component analysis is done on scaled expression data. The `ScaleData` function performs this step, and also allows to regress out common sources of technical variation, such as the total UMI counts per cell or the percentage of mitochondrial RNA.
+In *Seurat*, principal component analysis is done on scaled expression data. The <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">ScaleData</span> function performs this step, and also allows to regress out common sources of technical variation, such as the total UMI counts per cell or the percentage of mitochondrial RNA.
 
 
 ```r
@@ -321,7 +319,7 @@ grid.arrange(p1, p2, ncol=2)
 
 The next question is how many of the top principal components (PCs) are we going to use for the purpose of clustering the cells. The first thing to look at is the PCA scree-plot, showing the proportion of variance explained by each component. We are looking for a "knee" in the plot, where additional PCs do not bring much more new information.
 
-For this purpose, *Seurat* provides the function `PCElbowPlot`, that displays the standard-deviation of each PC.
+For this purpose, *Seurat* provides the function <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">PCElbowPlot</span>, that displays the standard-deviation of each PC.
 
 
 ```r
@@ -355,7 +353,7 @@ There is a drop in the percentage of variance explained after PC15 and the plot 
 
 Because of the high dimensionality of scRNA-seq datasets, clustering algorithms face a number of challenges, such as high computation times and memory requirements. To alieviate these problems, one solution is to perform the clustering using the cells PCA scores instead of the full expression matrix, where each principal component represents the signal of a correlated set of genes. Based on the analysis above, we are going to proceed using 20 PCs.
 
-`Seurat` uses a graph based clustering algorithm. The `resolution` parameter influences the granularity of the clusters, with higher values producing more and smaller clusters. 
+`Seurat` uses a graph based clustering algorithm. The <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">resolution</span> parameter influences the granularity of the clusters, with higher values producing more and smaller clusters. 
 
 
 ```r
@@ -399,7 +397,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 ![](./images/tutorial-seurat-mca_files/figure-html/tsne-1.png)<!-- -->
 
-**Exercise**: Modify the commands above to try different values of the `perplexity` argument. E.g. 5, 10, 20, 50, ...
+**Exercise**: Modify the commands above to try different values of the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">perplexity</span> argument. E.g. 5, 10, 20, 50, ...
 
 <details><summary><b>Click Here to see the solution</b></summary>
 
