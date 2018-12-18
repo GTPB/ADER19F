@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Using edgeR in R
+title: Exercise 2 - Using edgeR in R
 ---
-
-# Exercise 2 - Using edgeR in R
 
 ## Introduction
 
