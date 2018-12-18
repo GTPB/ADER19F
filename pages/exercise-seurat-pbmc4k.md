@@ -3,8 +3,6 @@ layout: page
 title: Analysis of PBMC4k using Seurat
 ---
 
-# Analysis of PBMC4k using Seurat
-
 ## Introduction
 
 
