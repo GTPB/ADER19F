@@ -4,8 +4,6 @@ title: Analysis of Mouse Cell Atlas scRNA-seq using Seurat
 output: 
   html_document:
     keep_md: yes
-    number_sections: yes
-    toc: yes
 ---
 
 ## Introduction
