@@ -1,9 +1,6 @@
 ---
 layout: page
 title: Analysis of Mouse Cell Atlas scRNA-seq using Seurat
-output:
-  html_document:
-    code_folding: show
 ---
 
 ## Introduction
@@ -62,7 +59,7 @@ plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
 
-<details><summary><b>Click Here to see the answer</b></summary><p>
+<details><summary><b>Click Here to see the answer</b></summary>
 
 There appears to be a drop in the total number of UMI counts after the first 1,000 barcodes. However, unlike what we saw in the 10x dataset, the separation between an empty GEM and a GEM containing a cell is less clear. This could be due to the presence of ambient RNA in the sample. 
 
@@ -84,8 +81,7 @@ abline(h=500, lty="dashed")
 ```
 ## [1] 2684
 ```
-
-</p></details>
+</details>
 
 ---
 
