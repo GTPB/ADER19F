@@ -16,7 +16,7 @@ In this tutorial we will perform the steps necessary to go from the raw expressi
 First we load a few packages. <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">Seurat</span> is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">gridExtra</span> is used to group multiple plots together in a grid.
 
 
-```{r}
+```{r, message=FALSE}
 library(Seurat)
 library(gridExtra)
 library(ggplot2)
