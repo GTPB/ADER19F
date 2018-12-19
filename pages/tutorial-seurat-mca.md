@@ -11,6 +11,8 @@ In the previous section of this course we processed the raw fastq files for a sa
 
 In this tutorial we will perform the steps necessary to go from the raw expression matrix to a list of clusters representing transcriptionally distinct cell sub-populations and a list of marker genes associated with each identified cluster. 
 
+<br/>
+
 ## Libraries
 
 First we load a few packages. <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">Seurat</code> is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">gridExtra</code> is used to group multiple plots together in a grid.
@@ -22,6 +24,7 @@ library(gridExtra)
 library(ggplot2)
 library(reshape2)
 ```
+<br/>
 
 ## Loading and filtering the raw UMI count matrix
 
@@ -157,6 +160,8 @@ VlnPlot(sobj, features.plot = c("nUMI", "nGene", "percent.mito"))
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-8-1.png)
 
+<br/>
+
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$percent.mito, pch=20, cex=0.5)
 ```
@@ -196,6 +201,7 @@ dim(sobj@data)
 ```
 ## [1] 12989  2611
 ```
+<br/>
 
 ## Normalization
 
@@ -240,6 +246,7 @@ sobj@data[1:10, 1:10]
 ## 0610037L13Rik .        
 ## 0610040B10Rik .
 ```
+<br/>
 
 ## Finding highly variable genes
 
@@ -287,6 +294,8 @@ VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.2)
 ```
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-10-2.png)
+
+<br/>
 
 ## Dimensional reduction
 
@@ -355,6 +364,8 @@ There is a drop in the percentage of variance explained after PC15 and the plot 
 
 ---
 
+<br/>
+
 ## Clustering
 
 Because of the high dimensionality of scRNA-seq datasets, clustering algorithms face a number of challenges, such as high computation times and memory requirements. To alieviate these problems, one solution is to perform the clustering using the cells PCA scores instead of the full expression matrix, where each principal component represents the signal of a correlated set of genes. Based on the analysis above, we are going to proceed using 20 PCs.
@@ -377,6 +388,8 @@ grid.arrange(p1, p2, ncol=2)
 ```
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-14-1.png)
+
+<br/>
 
 ## Visualizing clusters with a t-SNE plot
 
@@ -442,7 +455,7 @@ TSNEPlot(tmp, do.label = TRUE)
 
 </details>
 
-
+<br/>
 
 ## Finding marker genes
 
@@ -695,6 +708,8 @@ DoHeatmap(sobj, genes.use = top.markers$gene, slim.col.label = TRUE, remove.key 
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-29-1.png)
 
+<br/>
+
 ## Annotation of cell clusters
 
 Now that we have a clear set of 15 clusters and marker genes associated with each cluster, we may start annotating these clusters, by trying to identify what cell types are associated with each cluster. 
@@ -787,6 +802,8 @@ FeaturePlot(sobj, features.plot = genes, cols.use=c("grey", "red"), no.legend = 
 ```
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-36-1.png)
+
+<br/>
 
 ## Session Information
 
