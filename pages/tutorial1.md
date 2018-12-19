@@ -175,21 +175,21 @@ table(resHTSeq$padj < 0.05)
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre>
+<pre style="font-size:12px">
 table(resHTSeq$padj < 0.01)
 </pre>
 
-<pre>
+<pre style="font-size:12px">
 ## 
 ## FALSE  TRUE 
 ##  6330   259
 </pre>
 
-<pre>
+<pre style="font-size:12px">
 table(resHTSeq$pvalue < 0.01)
 </pre>
 
-<pre>
+<pre style="font-size:12px">
 ## 
 ## FALSE  TRUE 
 ##  9893   315
@@ -291,12 +291,12 @@ head(merged.results)
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre>
+<pre style="font-size:12px">
 merged.results <- merged.results[ order(merged.results$padj), ]
 head(merged.results)
 </pre>
 
-<pre>
+<pre style="font-size:12px">
 ##         Row.names trapnell_counts_C1_R1 trapnell_counts_C1_R2
 ## 124   FBgn0000370              8501.291              8316.689
 ## 3545  FBgn0030362             10506.340             10111.874
@@ -349,7 +349,7 @@ plotDispEsts(ddsHTSeq)
 
 ### P-value distribution
 
-As a sanity check, we can inspect the distribution of p-values using the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">hist</span> function.
+As a sanity check, we can inspect the distribution of p-values using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">hist</code> function.
 
 
 ```r
@@ -409,7 +409,7 @@ abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre>
+<pre style="font-size:12px">
 highlight <- which(resHTSeqShrunk$padj < 0.01)
 
 plot(resHTSeqShrunk$log2FoldChange, -log10(resHTSeqShrunk$pvalue), xlab="shrunken log2 Fold-change", ylab="-log P-adjusted", pch=20, cex=0.5)
@@ -446,7 +446,6 @@ plotPCA(transformed.vsd)
 ```
 
 ![](./images/tutorial1_files/unnamed-chunk-21-1.png)
-
 
 ### Sample-to-sample correlation heatmap
 
