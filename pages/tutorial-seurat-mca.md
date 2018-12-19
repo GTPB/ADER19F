@@ -418,7 +418,7 @@ tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=10)
 TSNEPlot(tmp, do.label = TRUE)
 </pre>
 
-<img src="./images/tutorial-seurat-mca_files/unnamed-chunk-15-2.png>
+<img src="./images/tutorial-seurat-mca_files/unnamed-chunk-15-2.png">
 
 
 <pre style="font-size: 12px">
