@@ -858,8 +858,8 @@ sessionInfo()
 
 ## References
 
-- https://satijalab.org/seurat/pbmc3k_tutorial.html
-- https://f1000research.com/articles/5-2122/v1
+- [https://satijalab.org/seurat/pbmc3k_tutorial.html](https://satijalab.org/seurat/pbmc3k_tutorial.html)
+- [https://f1000research.com/articles/5-2122/v1](https://satijalab.org/seurat/pbmc3k_tutorial.html)
 
 <br/>
 
