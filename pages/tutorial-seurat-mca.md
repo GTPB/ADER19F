@@ -64,7 +64,7 @@ plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 There appears to be a drop in the total number of UMI counts after the first 1,000 barcodes. However, unlike what we saw in the 10x dataset, the separation between an empty GEM and a GEM containing a cell is less clear. This could be due to the presence of ambient RNA in the sample. 
 </p><p>
 In the original study, taking into account the full set of 91 samples, the authors selected a threshold of 500 UMI counts to select barcodes for further analysis. Thus we are left with 2684 cells for further analysis.
-<p>
+</p>
 
 <pre style="font-size: 12px"> 
 plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
