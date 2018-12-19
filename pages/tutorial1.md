@@ -8,7 +8,7 @@ This document demonstrates how to use *DESeq2* in the *R environment* to perform
 
 ## Setting up the environment
 
-First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">setwd("path/to/directory")</span> in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
+First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">setwd("path/to/directory")</code> in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
 <br/>
 
 ## Setting up the count data and metadata
@@ -78,14 +78,14 @@ sampleTable
 
 ## Running a differential expression test with DESeq2
 
-With the sample table prepared, we are ready to run **DESeq2**. First need to import it into the R environment. This is done with the `library` command.
+With the sample table prepared, we are ready to run **DESeq2**. First need to import it into the R environment. This is done with the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">library</code> command.
 
 
 ```r
 library("DESeq2")
 ```
 
-Then, we prepare a special structure to tell *DESeq2* what samples we are going to analyse (our sample table), and what comparison we are goind to make. By setting the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">design</span> argument to <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">~ condition</span>, we are specifying that column as the experimental variable (C1 or C2).
+Then, we prepare a special structure to tell *DESeq2* what samples we are going to analyse (our sample table), and what comparison we are goind to make. By setting the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">design</code> argument to <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">~ condition</code>, we are specifying that column as the experimental variable (C1 or C2).
 
 
 ```r
@@ -124,7 +124,7 @@ ddsHTSeq <- DESeq(ddsHTSeq)
 ## fitting model and testing
 ```
 
-We can then extract the results of the differential expression in the form of a table using the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">results</span> function. The <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">head</span> function will print the first lines of this table on the console.
+We can then extract the results of the differential expression in the form of a table using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">results</code> function. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">head</code> function will print the first lines of this table on the console.
 
 
 ```r
@@ -155,7 +155,7 @@ head(resHTSeq)
 ## FBgn0000018 0.9992327
 ```
 
-*Hint: you can type <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">View(resHTSeq)</span> to open the full table in a separate window*
+*Hint: you can type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">View(resHTSeq)</code> to open the full table in a separate window*
 
 We can ask how many genes are differentially expressed (using a cutoff of 0.05) with this command.
 
@@ -175,25 +175,25 @@ table(resHTSeq$padj < 0.05)
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-```r
+<pre>
 table(resHTSeq$padj < 0.01)
-```
+</pre>
 
-```
+<pre>
 ## 
 ## FALSE  TRUE 
 ##  6330   259
-```
+</pre>
 
-```r
+<pre>
 table(resHTSeq$pvalue < 0.01)
-```
+</pre>
 
-```
+<pre>
 ## 
 ## FALSE  TRUE 
 ##  9893   315
-```
+</pre>
 
 </details>
 
@@ -286,17 +286,17 @@ head(merged.results)
 ```
 <br/>
 
-**Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">merged.results</span> table by p.value?
+**Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">merged.results</code> table by p.value?
 
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-```r
+<pre>
 merged.results <- merged.results[ order(merged.results$padj), ]
 head(merged.results)
-```
+</pre>
 
-```
+<pre>
 ##         Row.names trapnell_counts_C1_R1 trapnell_counts_C1_R2
 ## 124   FBgn0000370              8501.291              8316.689
 ## 3545  FBgn0030362             10506.340             10111.874
@@ -325,7 +325,7 @@ head(merged.results)
 ## 9801  3.250763e-190 5.354819e-187
 ## 2063  1.009490e-173 1.330306e-170
 ## 14818 2.253991e-170 2.475257e-167
-```
+</pre>
 
 </details>
 <br/>
@@ -370,7 +370,7 @@ plotMA(resHTSeq)
 
 ![](./images/tutorial1_files/unnamed-chunk-17-1.png)<!-- -->
 
-To obtain an **MA-plot** with shrunken log2 fold-changes we use the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">lfcShrink</span> function. This function is equivalent to the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">results</span> function that we called previously, but will return a table with the *log2FoldChange* and *lfcSE* columns replaced with the shrunken values. The <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">coef</span> argument is used to specify what *contrast* we are interested in analysing (in this case condition_C2_vs_C1), so we first call <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">resultsNames</span> to determine the right coefficient.
+To obtain an **MA-plot** with shrunken log2 fold-changes we use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">lfcShrink</code> function. This function is equivalent to the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">results</code> function that we called previously, but will return a table with the *log2FoldChange* and *lfcSE* columns replaced with the shrunken values. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">coef</code> argument is used to specify what *contrast* we are interested in analysing (in this case condition_C2_vs_C1), so we first call <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">resultsNames</code> to determine the right coefficient.
 
 
 ```r
@@ -409,15 +409,15 @@ abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-```r
+<pre>
 highlight <- which(resHTSeqShrunk$padj < 0.01)
 
 plot(resHTSeqShrunk$log2FoldChange, -log10(resHTSeqShrunk$pvalue), xlab="shrunken log2 Fold-change", ylab="-log P-adjusted", pch=20, cex=0.5)
 points(resHTSeqShrunk$log2FoldChange[ highlight ], -log10(resHTSeqShrunk$pvalue[ highlight ]), col="green", pch=20, cex=0.5)
 abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
-```
+</pre>
 
-![](./images/tutorial1_files/unnamed-chunk-20-1.png)<!-- -->
+<img src="./images/tutorial1_files/unnamed-chunk-20-1.png">
 
 </details>
 
@@ -428,7 +428,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 
 *DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression. 
 
-One such transformations is the variance stabilizing transformation (VST). You can type <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">?varianceStabilizingTransformation</span> to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">blind</span> argument is set to TRUE.
+One such transformations is the variance stabilizing transformation (VST). You can type <<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">?varianceStabilizingTransformation</code> to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">blind</code> argument is set to TRUE.
 
 
 ```r
