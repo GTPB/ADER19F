@@ -14,14 +14,14 @@ We will use *edgeR* to do a differential expression analysis of Tumor vs Non-Tum
 
 ## Load the count data
 
-We start by importing the counts table into R using the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">read.delim</span> function. Other functions to import tables include <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">read.table</span> and <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">read.csv</span>. We also specify that the values in the tables are separated by a TAB. You can type <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">?read.delim</span> in the R console to display the documentation of the function.
+We start by importing the counts table into R using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">read.delim</code> function. Other functions to import tables include <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">read.table</code> and <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">read.csv</code>. We also specify that the values in the tables are separated by a TAB. You can type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">?read.delim</code> in the R console to display the documentation of the function.
 
 
 ```r
 rawdata <- read.delim("edgeR_example1_Tuch.tab", sep = "\t")
 ```
 
-To check that the data was loaded properly we can use functions such as <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">head</span> (to displays the first lines of the table), <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">dim</span> (to display the dimensions of the table) and <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">summary</span> (to display summary statistics for each column). In RStudio you can also type <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">View(rawdata)</span> to view the full table on a separate window.
+To check that the data was loaded properly we can use functions such as <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">head</code> (to displays the first lines of the table), <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">dim</code> (to display the dimensions of the table) and <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">summary</code> (to display summary statistics for each column). In RStudio you can also type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">View(rawdata)</code> to view the full table on a separate window.
 
 
 ```r
@@ -112,14 +112,14 @@ y$samples
 ## T51     1 21832978    1.1729954
 ```
 
-After normalization, we can now produce a Multidimensional Scaling Plot (MDS) using the function <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">plotMDS</span>. This visualization, a type of dimensional reduction technique, places the samples on a plane such that the distance between samples approximates the typical log2 fold-changes between them.
+After normalization, we can now produce a Multidimensional Scaling Plot (MDS) using the function <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">plotMDS</code>. This visualization, a type of dimensional reduction technique, places the samples on a plane such that the distance between samples approximates the typical log2 fold-changes between them.
 
 
 ```r
 plotMDS(y)
 ```
 
-![](./images/tutorial2_files/unnamed-chunk-6-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-6-1.png)
 
 We now define the design of our comparison. We want to compare Tumor to Non-Tumor samples. So we first create a variable indicating which samples are from normal (N) or tumor (T) tissue. Then we define the design for the genewise linear models. Here, the `~ Tissue` design is equivalent to a simple pairwise test of Tumor vs Non-tumor (i.e. the model only takes into account the originating tissue).
 
@@ -148,7 +148,7 @@ design
 ## [1] "contr.treatment"
 ```
 
-Next we use this design to conduct the test of differential expression. In *edgeR*, this is done in 3 steps: estimation of the negative binomial dispersions (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">estimateDisp</span>), fitting of the negative binomial model to the count data (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">glmFit</span>) and hypothesis testing (<span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">glmLRT</span>).
+Next we use this design to conduct the test of differential expression. In *edgeR*, this is done in 3 steps: estimation of the negative binomial dispersions <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">estimateDisp</code>), fitting of the negative binomial model to the count data (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmFit</code>) and hypothesis testing (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmLRT</code>).
 
 
 ```r
@@ -171,7 +171,7 @@ summary(decideTestsDGE(lrt))
 ## Up         377
 ```
 
-In *edgeR* we make an MA-plot with the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">plotMD</span> function. Up-regulated genes are indicated in red, and down-regulated genes are indicated in blue. The horizontal lines indicate 2x fold-changes.
+In *edgeR* we make an MA-plot with the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">plotMD</code> function. Up-regulated genes are indicated in red, and down-regulated genes are indicated in blue. The horizontal lines indicate 2x fold-changes.
 
 
 ```r
@@ -179,9 +179,9 @@ plotMD(lrt)
 abline(h=c(-1, 1), col="blue")
 ```
 
-![](./images/tutorial2_files/unnamed-chunk-10-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-10-1.png)
 
-We can retrieve a table with all the results of differential expression using the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">topTags</span> function. We also save it to a file so we can latter open it in Excel.
+We can retrieve a table with all the results of differential expression using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">topTags</code> function. We also save it to a file so we can latter open it in Excel.
 
 
 ```r
@@ -210,7 +210,7 @@ write.table(result, file = "edgeR_Tuch_Tumor_vs_NonTumor.csv", sep="\t", row.nam
 
 Recall that tumor and non-samples were collected from 3 patients. Until now we have ignored this information in our design. Here we repeat the analysis by adding the sample pairing information to our model design, that will allow us to adjust for differences between patients.
 
-For this we only have to change the design definition. We create a new <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">Patient</span> variable, and then include it as a blocking factor in the GLM design. 
+For this we only have to change the design definition. We create a new <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">Patient</code> variable, and then include it as a blocking factor in the GLM design. 
 
 
 ```r
@@ -264,7 +264,7 @@ plotMD(lrt)
 abline(h=c(-1, 1), col="blue")
 ```
 
-![](./images/tutorial2_files/unnamed-chunk-12-1.png)<!-- -->
+![](./images/tutorial2_files/unnamed-chunk-12-1.png)
 
 ```r
 result_paired <- as.data.frame(topTags(lrt, n = nrow(rawcounts)))
