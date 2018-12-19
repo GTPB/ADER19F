@@ -45,7 +45,7 @@ dim(mat.raw)
 
 **Question**: How many genes and barcodes are quantified in this raw UMI matrix? 
 
-<details><summary>Click Here to see the answer</summary> 16566 genes and 10000 barcodes. </details>
+<details><summary><b>Click Here to see the answer</b></summary> 16566 genes and 10000 barcodes. </details>
 
 ---
 
@@ -62,7 +62,7 @@ plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
 
-<details><summary>Click Here to see the answer</summary>
+<details><summary><b>Click Here to see the answer</b></summary>
 <p>
 There appears to be a drop in the total number of UMI counts after the first 1,000 barcodes. However, unlike what we saw in the 10x dataset, the separation between an empty GEM and a GEM containing a cell is less clear. This could be due to the presence of ambient RNA in the sample. 
 </p><p>
@@ -182,7 +182,7 @@ A high percentage of mitochondrial RNA ususally indicates a dead or burst cell, 
 
 **Question:** Examine the distrubutions above. What cells, if any, would you remove from the analysis?
 
-<details><summary>Click Here to see the answer</summary> 
+<details><summary><b>Click Here to see the answer</b></summary> 
 
 A high percentage of mitochondrial RNA can indicate defective cells, so we should probably remove those. Also, barcodes with a much higher than average number of detected genes may indicate a multiplet (multiple cells in the same droplet), so we also remove barcodes with more than 1500 genes detected. 
 
@@ -252,7 +252,7 @@ sobj@data[1:10, 1:10]
 
 Housekeeping genes that are similarly expressed in all cell populations are not useful for the purpose of identifying these populations. Thus, it is often useful to select a subset of genes that display higher than average variability among cells to be used for dimensionality reduction and clustering of cells, as this will greatly speed-up the computations. 
 
-The `FindVariableGenes` from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">y.cuttoff</code>). We can also set thresholds for minimum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.low.cutoff</code>) and maximum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.high.cutoff</code>).  
+The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">FindVariableGenes</code> from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">y.cuttoff</code>). We can also set thresholds for minimum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.low.cutoff</code>) and maximum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.high.cutoff</code>).  
 
 
 ```r
@@ -356,7 +356,7 @@ plot(props, ylab="Proportion of variance", xlab="Principal Component")
 
 **Question**: Based on the above plots, how many principal components would you consider for further analysis.
 
-<details><summary>Click Here to see the answer</summary>
+<details><summary><b>Click Here to see the answer</b></summary>
 
 There is a drop in the percentage of variance explained after PC15 and the plot seems to reach saturation after approximately 20 PCs. Thus, 15 to 20 PCs seem to be adequate for this dataset.
 
@@ -418,7 +418,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 **Exercise**: Modify the commands above to try different values of the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">perplexity</code> argument. E.g. 5, 10, 20, 50, ...
 
-<details><summary>Click Here to see the solution</summary>
+<details><summary><b>Click Here to see the solution</b></summary>
 
 
 
@@ -515,7 +515,7 @@ FeaturePlot(sobj, features.plot = head(markers.0$gene), cols.use = c("grey", "bl
 
 **Exercise**: Modify the commands above to plot the top markers of cluster 7.
 
-<details><summary>Click Here to see the solution</summary>
+<details><summary><b>Click Here to see the solution</b></summary>
 
 
 <pre style="font-size: 12px">
@@ -537,7 +537,7 @@ VlnPlot(sobj, features.plot = head(markers.7$gene), point.size.use=0.5)
 
 **Question**: What can you conclude from the above plots?
 
-<details><summary>Click Here to see the solution</summary>
+<details><summary><b>Click Here to see the solution</b></summary>
 
 Some of the clusters appear to be very similar to each other. In particular, clusters 0, 2, 3 and 4 appear to be very similar. This is the result of <em>over-clustering</em> the cells, which splits large clusters of similar cells into smaller clusters based on small, negligeable, differences between the cells.
 
@@ -547,7 +547,7 @@ Some of the clusters appear to be very similar to each other. In particular, clu
 
 **Question**: Based on the t-SNE visualization, and expression of marker genes represented in the above plots, do you think any of the clusters should be combined? If yes, which ones?
 
-<details><summary>Click Here to see the answer</summary>
+<details><summary><b>Click Here to see the answer</b></summary>
 It appears from the expression heatmap that clusters 0, 2, 3 and 4 represent the same population of cells. Clusters 7 and 12 also appear to be very similar, although they are clearly separated on the t-SNE. 
 </details>
 
@@ -575,7 +575,7 @@ markers.0.2
 
 **Exercise**: Modify the commands above to check for diferences between clusters 0 and 3, 0 and 4. Also compare clusters and 7 and 12.
 
-<details><summary>Click Here to see the solution</summary>
+<details><summary><b>Click Here to see the solution</b></summary>
 
 
 <pre style="font-size: 12px">
@@ -689,7 +689,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-26-1.png)
 
-Finally, we run the `FindAllMarkers` function again to account for the new clustering.
+Finally, we run the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">FindAllMarkers</code> function again to account for the new clustering.
 
 
 ```r
