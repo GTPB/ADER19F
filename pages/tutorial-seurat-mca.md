@@ -125,6 +125,9 @@ VlnPlot(sobj, features.plot = c("nUMI", "nGene"), point.size.use = 0.2)
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-7-1.png)
 
+<br/>
+<br/>
+
 ```r
 plot(sobj@meta.data$nUMI, sobj@meta.data$nGene, pch=20, cex=0.5)
 ```
