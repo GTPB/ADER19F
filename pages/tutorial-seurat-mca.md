@@ -139,7 +139,7 @@ plot(sobj@meta.data$nUMI, sobj@meta.data$nGene, pch=20, cex=0.5)
 
 **Question**: Notice that the above plot seems to grow linearly. What does it suggest?
 
-<details><summary>Click Here to see the answer</summary> 
+<details><summary><b>Click Here to see the answer</b></summary> 
 
 This suggest that if the sample was sequenced deeper, we would be able to detect more genes.
 
