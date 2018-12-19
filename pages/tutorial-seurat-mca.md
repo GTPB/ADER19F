@@ -45,7 +45,7 @@ dim(mat.raw)
 
 **Question**: How many genes and barcodes are quantified in this raw UMI matrix? 
 
-<details><summary><b>Click Here to see the answer</b></summary> 16566 genes and 10000 barcodes. </details>
+<details><summary>Click Here to see the answer</summary> 16566 genes and 10000 barcodes. </details>
 
 ---
 
@@ -62,7 +62,7 @@ plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 <p>
 There appears to be a drop in the total number of UMI counts after the first 1,000 barcodes. However, unlike what we saw in the 10x dataset, the separation between an empty GEM and a GEM containing a cell is less clear. This could be due to the presence of ambient RNA in the sample. 
 </p><p>
@@ -139,7 +139,7 @@ plot(sobj@meta.data$nUMI, sobj@meta.data$nGene, pch=20, cex=0.5)
 
 **Question**: Notice that the above plot seems to grow linearly. What does it suggest?
 
-<details><summary><b>Click Here to see the answer</b></summary> 
+<details><summary>Click Here to see the answer</summary> 
 
 This suggest that if the sample was sequenced deeper, we would be able to detect more genes.
 
@@ -182,7 +182,7 @@ A high percentage of mitochondrial RNA ususally indicates a dead or burst cell, 
 
 **Question:** Examine the distrubutions above. What cells, if any, would you remove from the analysis?
 
-<details><summary><b>Click Here to see the answer</b></summary> 
+<details><summary>Click Here to see the answer</summary> 
 
 A high percentage of mitochondrial RNA can indicate defective cells, so we should probably remove those. Also, barcodes with a much higher than average number of detected genes may indicate a multiplet (multiple cells in the same droplet), so we also remove barcodes with more than 1500 genes detected. 
 
@@ -356,7 +356,7 @@ plot(props, ylab="Proportion of variance", xlab="Principal Component")
 
 **Question**: Based on the above plots, how many principal components would you consider for further analysis.
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 There is a drop in the percentage of variance explained after PC15 and the plot seems to reach saturation after approximately 20 PCs. Thus, 15 to 20 PCs seem to be adequate for this dataset.
 
@@ -418,7 +418,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 **Exercise**: Modify the commands above to try different values of the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">perplexity</code> argument. E.g. 5, 10, 20, 50, ...
 
-<details><summary><b>Click Here to see the solution</b></summary>
+<details><summary>Click Here to see the solution</summary>
 
 
 
