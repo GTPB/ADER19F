@@ -344,7 +344,7 @@ We can plot the *DESeq2* dispersion re-estimation procedure by typing:
 plotDispEsts(ddsHTSeq)
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-15-1.png )<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-15-1.png)
 <br/>
 
 ### P-value distribution
@@ -356,7 +356,7 @@ As a sanity check, we can inspect the distribution of p-values using the <span s
 hist(resHTSeq$pvalue, breaks=0:50/50, xlab="p value", main="Histogram of nominal p values")
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-16-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-16-1.png)
 <br/>
 
 ### MA-plot
@@ -368,7 +368,7 @@ To make an (unshrunken) **MA-plot**, that displays the relationship between a ge
 plotMA(resHTSeq)
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-17-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-17-1.png)
 
 To obtain an **MA-plot** with shrunken log2 fold-changes we use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">lfcShrink</code> function. This function is equivalent to the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">results</code> function that we called previously, but will return a table with the *log2FoldChange* and *lfcSE* columns replaced with the shrunken values. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">coef</code> argument is used to specify what *contrast* we are interested in analysing (in this case condition_C2_vs_C1), so we first call <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">resultsNames</code> to determine the right coefficient.
 
@@ -386,7 +386,7 @@ resHTSeqShrunk <- lfcShrink(ddsHTSeq, coef=2)
 plotMA(resHTSeqShrunk)
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-18-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-18-1.png)
 <br/>
 
 ### Volcano plot
@@ -402,7 +402,7 @@ points(resHTSeq$log2FoldChange[ highlight ], -log10(resHTSeq$pvalue[ highlight ]
 abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-19-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-19-1.png)
 
 **Exercise**: Change the commands above to make a **volcano plot** using the shrunken log fold changes instead. Also change the threshold of differential expression to 0.01 and the color of the differentially expressed genes to green.
 
@@ -445,7 +445,7 @@ transformed.vsd <- varianceStabilizingTransformation(ddsHTSeq, blind=TRUE)
 plotPCA(transformed.vsd)
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-21-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-21-1.png)
 
 
 ### Sample-to-sample correlation heatmap
@@ -461,7 +461,7 @@ heatmap(dists, main="Clustering of sample-to-sample distances", scale="none")
 ```
 <br/>
   
-![](./images/tutorial1_files/unnamed-chunk-22-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-22-1.png)
 
 We can also use pearson (or spearman) correlations as a distance metric. This is more robust than simple euclidean distances, and has the advantage that we can even use the raw (non-normalized) counts as input. It is generally a good idea to log transform the counts first.
 
@@ -474,7 +474,7 @@ heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale
 ```
 <br/>
 
-![](./images/tutorial1_files/unnamed-chunk-23-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-23-1.png)
 
 <br/>
 
@@ -521,7 +521,7 @@ heatmap.2(diffcounts,
           distfun = function(x) as.dist(1 - cor(t(x))))
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-24-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-24-1.png)
 
 The following commands are used to plot a heatmap of the 20 most differentially expressed genes. For this, we use the ordered results table to determine which genes are most differentially expressed, and then plot the values from the normalized counts table (transformed to log10).
 
@@ -551,7 +551,7 @@ pheatmap(values,
          width=6)
 ```
 
-![](./images/tutorial1_files/unnamed-chunk-25-1.png)<!-- -->
+![](./images/tutorial1_files/unnamed-chunk-25-1.png)
 <br/>
 
 ## Session information
