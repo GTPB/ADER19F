@@ -428,7 +428,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 
 *DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression. 
 
-One such transformations is the variance stabilizing transformation (VST). You can type <<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">?varianceStabilizingTransformation</code> to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">blind</code> argument is set to TRUE.
+One such transformations is the variance stabilizing transformation (VST). You can type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">?varianceStabilizingTransformation</code> to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">blind</code> argument is set to TRUE.
 
 
 ```r
@@ -446,20 +446,21 @@ plotPCA(transformed.vsd)
 ```
 
 ![](./images/tutorial1_files/unnamed-chunk-21-1.png)<!-- -->
-<br/>
+
 
 ### Sample-to-sample correlation heatmap
 
 Another common visualization of high-throughput datasets is a clustered heatmap of sample-to-sample distances (or correlations). This visualization groups togheter the samples that are more similar to each other. 
 
-To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the <span style="padding:2px 3px 3px;background-color: #eaeaea;font-family: Courier New;font-size: 12px;color: #333333;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;">heatmap</span> (from the base R package) to cluster and display the heatmap. 
+To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">heatmap</code> (from the base R package) to cluster and display the heatmap. 
 
 
 ```r
 dists <- as.matrix(dist(t(normCounts)))
 heatmap(dists, main="Clustering of sample-to-sample distances", scale="none")
 ```
-
+<br/>
+  
 ![](./images/tutorial1_files/unnamed-chunk-22-1.png)<!-- -->
 
 We can also use pearson (or spearman) correlations as a distance metric. This is more robust than simple euclidean distances, and has the advantage that we can even use the raw (non-normalized) counts as input. It is generally a good idea to log transform the counts first.
@@ -471,8 +472,10 @@ log10_rawCounts <- log10(counts(ddsHTSeq) + 1)
 dists <- 1 - cor(log10_rawCounts, method="pearson")
 heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale="none")
 ```
+<br/>
 
 ![](./images/tutorial1_files/unnamed-chunk-23-1.png)<!-- -->
+
 <br/>
 
 ## Other visualizations
