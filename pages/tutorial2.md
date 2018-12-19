@@ -121,7 +121,7 @@ plotMDS(y)
 
 ![](./images/tutorial2_files/unnamed-chunk-6-1.png)
 
-We now define the design of our comparison. We want to compare Tumor to Non-Tumor samples. So we first create a variable indicating which samples are from normal (N) or tumor (T) tissue. Then we define the design for the genewise linear models. Here, the `~ Tissue` design is equivalent to a simple pairwise test of Tumor vs Non-tumor (i.e. the model only takes into account the originating tissue).
+We now define the design of our comparison. We want to compare Tumor to Non-Tumor samples. So we first create a variable indicating which samples are from normal (N) or tumor (T) tissue. Then we define the design for the genewise linear models. Here, the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">~ Tissue</code> design is equivalent to a simple pairwise test of Tumor vs Non-tumor (i.e. the model only takes into account the originating tissue).
 
 
 ```r
@@ -148,7 +148,7 @@ design
 ## [1] "contr.treatment"
 ```
 
-Next we use this design to conduct the test of differential expression. In *edgeR*, this is done in 3 steps: estimation of the negative binomial dispersions <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">estimateDisp</code>), fitting of the negative binomial model to the count data (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmFit</code>) and hypothesis testing (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmLRT</code>).
+Next we use this design to conduct the test of differential expression. In *edgeR*, this is done in 3 steps: estimation of the negative binomial dispersions (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">estimateDisp</code>), fitting of the negative binomial model to the count data (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmFit</code>) and hypothesis testing (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">glmLRT</code>).
 
 
 ```r
