@@ -57,6 +57,7 @@ umi.per.barcode <- colSums(mat.raw)
 x <- sort(umi.per.barcode, decreasing = TRUE)
 plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 ```
+
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-3-1.png)
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
