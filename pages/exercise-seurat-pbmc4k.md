@@ -26,7 +26,7 @@ dim(mat.raw)
 ## [1] 33694  4340
 ```
 
-We start here with the pre-filtered matrix provided by `cellranger` containing the set of 4321 high-confidence cells. So we can proceed immediately to create the *Seurat* object.
+We start here with the pre-filtered matrix provided by <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">cellranger</code> containing the set of 4321 high-confidence cells. So we can proceed immediately to create the *Seurat* object.
 
 
 ```r
@@ -49,7 +49,7 @@ When you arrive at a solution, or if you get stuck, click on the solution link b
 
 Check the distributions of UMI, gene counts and percent of mitochondrial RNA, and filter the barcodes appropriately.
 
-*Note: while in the mouse genome annotation mitochondrial genes have names that start with `mt-` (lowercase), in the human annotation mitochondrial genes start with `MT-` (uppercase).*
+*Note: while in the mouse genome annotation mitochondrial genes have names that start with <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">mt-</code> (lowercase), in the human annotation mitochondrial genes start with <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">MT-</code> (uppercase).*
 
 <details><summary><b>Click Here to see one solution</b></summary>
 
