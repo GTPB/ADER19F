@@ -359,6 +359,7 @@ FeaturePlot(sobj, features.plot = c("PPBP"), cols.use=c("grey", "red"), pt.size=
 <img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-5.png">
 
 </details>
+<br/>
 
 ## Session Information
 
