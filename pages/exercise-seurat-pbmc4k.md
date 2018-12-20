@@ -101,52 +101,57 @@ dim(sobj@data)
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 sobj <- NormalizeData(sobj, normalization.method = "LogNormalize", scale.factor = median(sobj@meta.data$nUMI))
-```
+</pre>
 
 </details>
+<br/>
 
 ### Exercise 3: Select a subset of highly variable genes to use for dimensionality reduction and clustering
 
-*Hint: Aim for a subset of 1,000 to 2,000 genes.* 
+*__Hint__: Aim for a subset of 1,000 to 2,000 genes.* 
 
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 sobj <- FindVariableGenes(sobj, mean.function = ExpMean, dispersion.function = LogVMR,  
                           x.low.cutoff = 0.0125, x.high.cutoff = 3, y.cutoff = 0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/vargenes-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/vargenes-1.png">
 
-```r
+
+<pre style="font-size: 12px">
 length(sobj@var.genes)
-```
+</pre>
 
-```
+<pre style="font-size: 12px">
 ## [1] 1252
-```
+</pre>
 
 
-```r
+<pre style="font-size: 12px">
 hvginfo <- sobj@hvg.info[ sobj@var.genes, ]
 highest.dispersion <- head(rownames(hvginfo)[ order(-hvginfo$gene.dispersion) ])
 highest.mean <- head(rownames(hvginfo)[ order(-hvginfo$gene.mean) ])
 
 VlnPlot(sobj, features.plot = highest.dispersion, point.size.use=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-1.png">
 
-```r
+
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-2.png)<!-- -->
+
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-7-2.png">
 
 </details>
+<br/>
 
 ### Exercise 4: Scale the normalized matrix, and perform a principal component analysis (PCA) 
 
@@ -155,83 +160,86 @@ After obtaining and visualizing the PCA, determine the number of PCs you are goi
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 sobj <- ScaleData(object = sobj, vars.to.regress = c("nUMI", "percent.mito"))
-```
+</pre>
 
-```
+
+<pre style="font-size: 12px">
 ## Regressing out: nUMI, percent.mito
-```
+</pre>
 
-```
+<pre style="font-size: 12px">
 ## 
 ## Time Elapsed:  21.6098577976227 secs
-```
+</pre>
 
-```
+<pre style="font-size: 12px">
 ## Scaling data matrix
-```
+</pre>
 
 
-```r
+<pre style="font-size: 12px">
 sobj <- RunPCA(object = sobj, pc.genes = sobj@var.genes, pcs.compute = 40, do.print=FALSE)
 
 p1 <- PCAPlot(object = sobj, dim.1 = 1, dim.2 = 2, do.return=TRUE) + theme(legend.pos="none")
 p2 <- PCAPlot(object = sobj, dim.1 = 2, dim.2 = 3, do.return=TRUE) + theme(legend.pos="none")
 grid.arrange(p1, p2, ncol=2)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-8-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-8-1.png">
 
-
-```r
+<pre style="font-size: 12px">
 PCElbowPlot(sobj, num.pc = 40)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-9-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-9-1.png">
 
 
-```r
+<pre style="font-size: 12px">
 PCHeatmap(sobj, pc.use = 1:15, cells.use = 500, do.balanced = TRUE, label.columns = FALSE)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-1.png">
 
-```r
+<pre style="font-size: 12px">
 VizPCA(sobj, pcs.use = 1:15, do.balanced = TRUE)
-```
-
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-2.png)<!-- -->
+</pre>
 
 
-```r
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-10-2.png">
+
+<pre style="font-size: 12px">
 # sobj <- JackStraw(sobj, num.pc = 40, num.replicate = 50, do.par=TRUE, display.progress = FALSE)
 # sobj <- JackStrawPlot(sobj, PCs = 1:40)
 # 
 # plot(1:40, -log10(sobj@dr$pca@jackstraw@overall.p.values[,2]))
 # abline(h=-log10(0.05))
-```
+</pre>
+
 
 </details>
+<br/>
 
 ### Exercise 5: Cluster the cells in the expression matrix and represent the clusters in a t-SNE plot
 
-Try to select an appropriate value for the clustering `resolution` parameter, and the `perplexity` parameter of the t-SNE.
+Try to select an appropriate value for the clustering <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">resolution</code> parameter, and the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">perplexity</code> parameter of the t-SNE.
 
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 sobj <- FindClusters(sobj, reduction.type = "pca", dims.use = 1:15, 
     resolution = 0.8, print.output = 0, save.SNN = FALSE)
 
 sobj <- RunTSNE(sobj, dims.use = 1:15, do.fast = TRUE, perplexity = 30)
 TSNEPlot(sobj, do.label = TRUE)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/clusters-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/clusters-1.png">
 
 </details>
+<br/>
 
 ### Exercise 6: Find marker genes for all clusters
 
@@ -240,14 +248,14 @@ Examine the top markers for all clusters, and determine if any of the clusters s
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 markers <- FindAllMarkers(object = sobj, only.pos = TRUE, min.pct = 0.25, thresh.use = 0.25)
 markers <- markers[ markers$p_val_adj < 0.01, ]
 
 head(markers)
-```
+</pre>
 
-```
+<pre style="font-size: 12px">
 ##               p_val avg_logFC pct.1 pct.2     p_val_adj cluster  gene
 ## RPL21 9.595436e-177 0.3426853 1.000 0.999 1.478753e-172       0 RPL21
 ## RPS27 5.806036e-170 0.3684605 1.000 1.000 8.947683e-166       0 RPS27
@@ -255,21 +263,22 @@ head(markers)
 ## RPL32 1.498597e-162 0.3333247 1.000 1.000 2.309487e-158       0 RPL32
 ## RPL34 1.495631e-161 0.3295687 1.000 0.999 2.304916e-157       0 RPL34
 ## RPS14 3.348956e-158 0.3324048 1.000 1.000 5.161076e-154       0 RPS14
-```
+</pre>
 
 
-```r
+<pre style="font-size: 12px">
 top.markers <- do.call(rbind, lapply(split(markers, markers$cluster), head))
 DoHeatmap(sobj, genes.use = top.markers$gene, slim.col.label = TRUE, remove.key = TRUE)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-13-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-13-1.png">
 
 </details>
+<br/>
 
 ### Exercise 7: Identify cell subpolulations
 
-Use the `VlnPlot` and `FeaturePlot` functions to examine the expresssion of the marker genes below. Can you indentify some of the cell subpopulations?  
+Use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">VlnPlot</code> and <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">FeaturePlot</code> functions to examine the expresssion of the marker genes below. Can you indentify some of the cell subpopulations?  
 
 | Markers | Cell Type |
 |:--------|:----------|
@@ -285,21 +294,22 @@ Use the `VlnPlot` and `FeaturePlot` functions to examine the expresssion of the 
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-```r
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("IL7R", "MS4A1"), point.size.use=0.2)
-```
+</pre>
+
 
 ![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-1.png)<!-- -->
 
-```r
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("CD14", "LYZ", "FCGR3A", "MS4A7"), point.size.use=0.2)
-```
+</pre>
 
 ![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-2.png)<!-- -->
 
-```r
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("MS4A1"), point.size.use=0.2)
-```
+</pre
 
 ![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-3.png)<!-- -->
 
