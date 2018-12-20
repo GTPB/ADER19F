@@ -299,62 +299,62 @@ VlnPlot(sobj, features.plot = c("IL7R", "MS4A1"), point.size.use=0.2)
 </pre>
 
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-1.png">
 
 <pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("CD14", "LYZ", "FCGR3A", "MS4A7"), point.size.use=0.2)
 </pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-2.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-2.png">
 
 <pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("MS4A1"), point.size.use=0.2)
-</pre
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-3.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-3.png">
 
-```r
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("FCER1A", "CST3"), point.size.use=0.2)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-4.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-4.png">
 
-```r
+<pre style="font-size: 12px">
 VlnPlot(sobj, features.plot = c("PPBP"), point.size.use=0.2)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-5.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-14-5.png">
 
 
-```r
+<pre style="font-size: 12px">
 FeaturePlot(sobj, features.plot = c("IL7R", "MS4A1"), cols.use=c("grey", "red"), pt.size=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-1.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-1.png">
 
-```r
+<pre style="font-size: 12px">
 FeaturePlot(sobj, features.plot = c("CD14", "LYZ", "FCGR3A", "MS4A7"), cols.use=c("grey", "red"), pt.size=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-2.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-2.png">
 
-```r
+<pre style="font-size: 12px">
 FeaturePlot(sobj, features.plot = c("MS4A1"), cols.use=c("grey", "red"), pt.size=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-3.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-3.png">
 
-```r
+<pre style="font-size: 12px">
 FeaturePlot(sobj, features.plot = c("FCER1A", "CST3"), cols.use=c("grey", "red"), pt.size=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-4.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-4.png">
 
-```r
+<pre style="font-size: 12px">
 FeaturePlot(sobj, features.plot = c("PPBP"), cols.use=c("grey", "red"), pt.size=0.5)
-```
+</pre>
 
-![](./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-5.png)<!-- -->
+<img src="./images/exercise-seurat-pbmc4k_files/unnamed-chunk-15-5.png">
 
 </details>
 
@@ -430,9 +430,11 @@ sessionInfo()
 ## [112] ROCR_1.0-7
 ```
 
+<br/>
+
 ## References
 
-- https://satijalab.org/seurat/pbmc3k_tutorial.html
+- [https://satijalab.org/seurat/pbmc3k_tutorial.html](https://satijalab.org/seurat/pbmc3k_tutorial.html)
 
 <br/>
 
