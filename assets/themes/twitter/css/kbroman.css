@@ -4,6 +4,7 @@ code {
   color: black;
   background-color:   #d8edfc;
   border: 1px solid #e1e1e8;
+  white-space: pre-wrap
 }
 
 a code {
