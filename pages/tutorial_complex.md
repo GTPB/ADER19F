@@ -301,13 +301,13 @@ What about the status of the mouse? In this case, we have three values (virgin, 
 **Task**: Make a design matrix to test status, controlling for cell type.
 <details><summary><b>Click Here to see the answer</b></summary>
 
-<pre style="font-size:12px">
+<pre>
 design <- model.matrix(~ CellType + Status, data=metadata)
 rownames(design) <- colnames(y)
 design
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 ##    (Intercept) CellTypeL Statuspregnant Statusvirgin
 ## DG           1         0              0            1
 ## DH           1         0              0            1
@@ -433,7 +433,7 @@ Now, we need to be carefull when choosing the variables to check for significanc
 **Question**: How many genes you get with the default test for glmQLFtest?
 <details><summary><b>Click Here to see the answer</b></summary>
 
-<pre style="font-size:12px">
+<pre>
 y <- DGEList(counts=rawdata[,3:14], genes=rawdata[,1:2])
 y <- calcNormFactors(y)
 y <- estimateDisp(y, design, robust=TRUE)
@@ -443,7 +443,7 @@ topgenes<-topTags(qlt, n=dim(rawdata)[[1]])
 table(topgenes$table$FDR<0.05)
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 ## 
 ## FALSE  TRUE 
 ##  5788 21391
