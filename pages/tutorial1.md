@@ -175,11 +175,11 @@ table(resHTSeq$padj < 0.05)
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre style="font-size:12px">
+<pre>
 table(resHTSeq$padj < 0.01)
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 ## 
 ## FALSE  TRUE 
 ##  6330   259
