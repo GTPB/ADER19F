@@ -57,7 +57,7 @@ Check the distributions of UMI, gene counts and percent of mitochondrial RNA, an
 <details><summary><b>Click Here to see one solution</b></summary>
 
 
-<pr>
+<pre>
 VlnPlot(sobj, features.plot = c("nUMI", "nGene"))
 </pre>
 
