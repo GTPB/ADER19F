@@ -8,7 +8,7 @@ This document demonstrates how to use *DESeq2* in the *R environment* to perform
 
 ## Setting up the environment
 
-First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">setwd("path/to/directory")</code> in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
+First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type `setwd("path/to/directory")` in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
 <br/>
 
 ## Setting up the count data and metadata
@@ -78,14 +78,14 @@ sampleTable
 
 ## Running a differential expression test with DESeq2
 
-With the sample table prepared, we are ready to run **DESeq2**. First need to import it into the R environment. This is done with the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">library</code> command.
+With the sample table prepared, we are ready to run **DESeq2**. First need to import it into the R environment. This is done with the `library` command.
 
 
 ```r
 library("DESeq2")
 ```
 
-Then, we prepare a special structure to tell *DESeq2* what samples we are going to analyse (our sample table), and what comparison we are goind to make. By setting the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">design</code> argument to <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">~ condition</code>, we are specifying that column as the experimental variable (C1 or C2).
+Then, we prepare a special structure to tell *DESeq2* what samples we are going to analyse (our sample table), and what comparison we are goind to make. By setting the `design` argument to `~ condition`, we are specifying that column as the experimental variable (C1 or C2).
 
 
 ```r
@@ -124,7 +124,7 @@ ddsHTSeq <- DESeq(ddsHTSeq)
 ## fitting model and testing
 ```
 
-We can then extract the results of the differential expression in the form of a table using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">results</code> function. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">head</code> function will print the first lines of this table on the console.
+We can then extract the results of the differential expression in the form of a table using the `results` function. The `head` function will print the first lines of this table on the console.
 
 
 ```r
@@ -155,7 +155,7 @@ head(resHTSeq)
 ## FBgn0000018 0.9992327
 ```
 
-*Hint: you can type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">View(resHTSeq)</code> to open the full table in a separate window*
+*Hint: you can type `View(resHTSeq)` to open the full table in a separate window*
 
 We can ask how many genes are differentially expressed (using a cutoff of 0.05) with this command.
 
@@ -286,7 +286,7 @@ head(merged.results)
 ```
 <br/>
 
-**Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">merged.results</code> table by p.value?
+**Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the `merged.results` table by p.value?
 
 <details><summary><b>Click Here to see the answer</b></summary>
 
@@ -349,7 +349,7 @@ plotDispEsts(ddsHTSeq)
 
 ### P-value distribution
 
-As a sanity check, we can inspect the distribution of p-values using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">hist</code> function.
+As a sanity check, we can inspect the distribution of p-values using the `hist` function.
 
 
 ```r
@@ -370,7 +370,7 @@ plotMA(resHTSeq)
 
 ![](./images/tutorial1_files/unnamed-chunk-17-1.png)
 
-To obtain an **MA-plot** with shrunken log2 fold-changes we use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">lfcShrink</code> function. This function is equivalent to the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">results</code> function that we called previously, but will return a table with the *log2FoldChange* and *lfcSE* columns replaced with the shrunken values. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">coef</code> argument is used to specify what *contrast* we are interested in analysing (in this case condition_C2_vs_C1), so we first call <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">resultsNames</code> to determine the right coefficient.
+To obtain an **MA-plot** with shrunken log2 fold-changes we use the `lfcShrink` function. This function is equivalent to the `results` function that we called previously, but will return a table with the *log2FoldChange* and *lfcSE* columns replaced with the shrunken values. The `coef` argument is used to specify what *contrast* we are interested in analysing (in this case condition_C2_vs_C1), so we first call `resultsNames` to determine the right coefficient.
 
 
 ```r
@@ -428,7 +428,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 
 *DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression. 
 
-One such transformations is the variance stabilizing transformation (VST). You can type <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">?varianceStabilizingTransformation</code> to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">blind</code> argument is set to TRUE.
+One such transformations is the variance stabilizing transformation (VST). You can type `?varianceStabilizingTransformation` to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the `blind` argument is set to TRUE.
 
 
 ```r
@@ -451,7 +451,7 @@ plotPCA(transformed.vsd)
 
 Another common visualization of high-throughput datasets is a clustered heatmap of sample-to-sample distances (or correlations). This visualization groups togheter the samples that are more similar to each other. 
 
-To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">heatmap</code> (from the base R package) to cluster and display the heatmap. 
+To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the `heatmap` (from the base R package) to cluster and display the heatmap. 
 
 
 ```r
