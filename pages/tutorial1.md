@@ -185,11 +185,11 @@ table(resHTSeq$padj < 0.01)
 ##  6330   259
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 table(resHTSeq$pvalue < 0.01)
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 ## 
 ## FALSE  TRUE 
 ##  9893   315
@@ -291,12 +291,12 @@ head(merged.results)
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre style="font-size:12px">
+<pre>
 merged.results <- merged.results[ order(merged.results$padj), ]
 head(merged.results)
 </pre>
 
-<pre style="font-size:12px">
+<pre>
 ##         Row.names trapnell_counts_C1_R1 trapnell_counts_C1_R2
 ## 124   FBgn0000370              8501.291              8316.689
 ## 3545  FBgn0030362             10506.340             10111.874
@@ -409,7 +409,7 @@ abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre style="font-size:12px">
+<pre style=>
 highlight <- which(resHTSeqShrunk$padj < 0.01)
 
 plot(resHTSeqShrunk$log2FoldChange, -log10(resHTSeqShrunk$pvalue), xlab="shrunken log2 Fold-change", ylab="-log P-adjusted", pch=20, cex=0.5)
