@@ -15,7 +15,7 @@ In this tutorial we will perform the steps necessary to go from the raw expressi
 
 ## Libraries
 
-First we load a few packages. <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">Seurat</code> is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">gridExtra</code> is used to group multiple plots together in a grid.
+First we load a few packages. `Seurat` is one of several packages designed for downstream analysis of scRNA-seq datasets. It implements functions to perform filtering, quality control, normalization, dimensional reduction, clustering and differential expression of scRNA-seq datasets. `gridExtra` is used to group multiple plots together in a grid.
 
 
 ```{r}
@@ -69,7 +69,7 @@ There appears to be a drop in the total number of UMI counts after the first 1,0
 In the original study, taking into account the full set of 91 samples, the authors selected a threshold of 500 UMI counts to select barcodes for further analysis. Thus we are left with 2684 cells for further analysis.
 </p>
 
-<pre style="font-size: 12px"> 
+<pre> 
 plot(x, log="xy",type="l", xlab="Barcodes", ylab="UMI counts")
 abline(h=500, lty="dashed")
 </pre>
@@ -78,12 +78,12 @@ abline(h=500, lty="dashed")
 
 
 
-<pre style="font-size: 12px"> 
+<pre> 
 (num.barcodes <- length(which(x >= 500)))
 </pre>
 
 
-<pre style="font-size: 12px"> 
+<pre> 
 ## [1] 2684
 </pre>
 
@@ -104,7 +104,7 @@ dim(mat.raw)
 ## [1] 16566  2684
 ```
 
-To use the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">Seurat</code> package, we first need to create a *Seurat object*. This is a complex data structure that will conveniently hold all relevant information during the analysis, such as the raw count data, the normalized expressions, reduced dimensions, cluster assignments, etc...
+To use the `Seurat` package, we first need to create a *Seurat object*. This is a complex data structure that will conveniently hold all relevant information during the analysis, such as the raw count data, the normalized expressions, reduced dimensions, cluster assignments, etc...
 
 When creating the *Seurat object* we can specify certain filtering criteria that will immediately be applied to the matrix. Here we specify that we only want to consider genes expressed in at least 5 cells. Aproximately 3,500 genes are discarded from the matrix.
 
@@ -252,7 +252,7 @@ sobj@data[1:10, 1:10]
 
 Housekeeping genes that are similarly expressed in all cell populations are not useful for the purpose of identifying these populations. Thus, it is often useful to select a subset of genes that display higher than average variability among cells to be used for dimensionality reduction and clustering of cells, as this will greatly speed-up the computations. 
 
-The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">FindVariableGenes</code> from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">y.cuttoff</code>). We can also set thresholds for minimum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.low.cutoff</code>) and maximum expression (<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">x.high.cutoff</code>).  
+The `FindVariableGenes` from the *Seurat* package does this by selecting genes that display a variance/mean ratio above a user-supplied threshold. Here we select genes that have a dispersion more than 0.5 standard deviations above the average dispersion of genes with a similar expression level (`y.cuttoff`). We can also set thresholds for minimum expression (`x.low.cutoff`) and maximum expression (`x.high.cutoff`).  
 
 
 ```r
@@ -276,7 +276,7 @@ length(sobj@var.genes)
 ## [1] 944
 ```
 
-We can check the expression of a few of these variable genes across all cells using the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">VlnPlot</code> function. We plot the expression of the 6 variable genes with highest dispersion, and the 6 variable genes with highest mean.
+We can check the expression of a few of these variable genes across all cells using the `VlnPlot` function. We plot the expression of the 6 variable genes with highest dispersion, and the 6 variable genes with highest mean.
 
 
 ```r
@@ -299,7 +299,7 @@ VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.2)
 
 ## Dimensional reduction
 
-In *Seurat*, principal component analysis is done on scaled expression data. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">ScaleData</code> function performs this step, and also allows to regress out common sources of technical variation, such as the total UMI counts per cell or the percentage of mitochondrial RNA.
+In *Seurat*, principal component analysis is done on scaled expression data. The `ScaleData` function performs this step, and also allows to regress out common sources of technical variation, such as the total UMI counts per cell or the percentage of mitochondrial RNA.
 
 
 ```r
@@ -334,7 +334,7 @@ grid.arrange(p1, p2, ncol=2)
 
 The next question is how many of the top principal components (PCs) are we going to use for the purpose of clustering the cells. The first thing to look at is the PCA scree-plot, showing the proportion of variance explained by each component. We are looking for a "knee" in the plot, where additional PCs do not bring much more new information.
 
-For this purpose, *Seurat* provides the function <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">PCElbowPlot</code>, that displays the standard-deviation of each PC.
+For this purpose, *Seurat* provides the function `PCElbowPlot`, that displays the standard-deviation of each PC.
 
 
 ```r
@@ -370,7 +370,7 @@ There is a drop in the percentage of variance explained after PC15 and the plot 
 
 Because of the high dimensionality of scRNA-seq datasets, clustering algorithms face a number of challenges, such as high computation times and memory requirements. To alieviate these problems, one solution is to perform the clustering using the cells PCA scores instead of the full expression matrix, where each principal component represents the signal of a correlated set of genes. Based on the analysis above, we are going to proceed using 20 PCs.
 
-<code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">Seurat</code> uses a graph based clustering algorithm. The <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">resolution</code> parameter influences the granularity of the clusters, with higher values producing more and smaller clusters. 
+`Seurat` uses a graph based clustering algorithm. The `resolution` parameter influences the granularity of the clusters, with higher values producing more and smaller clusters. 
 
 
 ```r
@@ -406,7 +406,7 @@ Read more about t-SNE:
 - [t-distributed stochastic neighbor embedding (Wikipedia)](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding)
 - [How to Use t-SNE Effectively](https://distill.pub/2016/misread-tsne/)
 
-For scRNA-seq datasets, a <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">perplexity</code> value in the range of 20 to 50 usually produces good results.
+For scRNA-seq datasets, a `perplexity` value in the range of 20 to 50 usually produces good results.
 
 
 ```r
@@ -416,13 +416,13 @@ TSNEPlot(sobj, do.label = TRUE)
 
 ![](./images/tutorial-seurat-mca_files/figure-html/tsne-1.png)
 
-**Exercise**: Modify the commands above to try different values of the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">perplexity</code> argument. E.g. 5, 10, 20, 50, ...
+**Exercise**: Modify the commands above to try different values of the `perplexity` argument. E.g. 5, 10, 20, 50, ...
 
 <details><summary><b>Click Here to see the solution</b></summary>
 
 
 
-<pre style="font-size: 12px">
+<pre>
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=5)
 TSNEPlot(tmp, do.label = TRUE)
 </pre>
@@ -430,7 +430,7 @@ TSNEPlot(tmp, do.label = TRUE)
 <img src="./images/tutorial-seurat-mca_files/unnamed-chunk-15-1.png">
 
 
-<pre style="font-size: 12px">
+<pre>
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=10)
 TSNEPlot(tmp, do.label = TRUE)
 </pre>
@@ -438,7 +438,7 @@ TSNEPlot(tmp, do.label = TRUE)
 <img src="./images/tutorial-seurat-mca_files/unnamed-chunk-15-2.png">
 
 
-<pre style="font-size: 12px">
+<pre>
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=20)
 TSNEPlot(tmp, do.label = TRUE)
 </pre>
@@ -446,7 +446,7 @@ TSNEPlot(tmp, do.label = TRUE)
 <img src="./images/tutorial-seurat-mca_files/unnamed-chunk-15-3.png">
 
 
-<pre style="font-size: 12px">
+<pre>
 tmp <- RunTSNE(sobj, dims.use = 1:20, do.fast = TRUE, perplexity=50)
 TSNEPlot(tmp, do.label = TRUE)
 </pre>
@@ -518,14 +518,14 @@ FeaturePlot(sobj, features.plot = head(markers.0$gene), cols.use = c("grey", "bl
 <details><summary><b>Click Here to see the solution</b></summary>
 
 
-<pre style="font-size: 12px">
+<pre>
 markers.7 <- markers[ which(markers$cluster == 7), ]
 FeaturePlot(sobj, features.plot = head(markers.7$gene), cols.use = c("grey", "blue"), reduction.use = "tsne")
 </pre>
 
 <img src="./images/tutorial-seurat-mca_files/unnamed-chunk-21-1.png">
 
-<pre style="font-size: 12px">
+<pre>
 VlnPlot(sobj, features.plot = head(markers.7$gene), point.size.use=0.5)
 </pre>
 
@@ -578,13 +578,13 @@ markers.0.2
 <details><summary><b>Click Here to see the solution</b></summary>
 
 
-<pre style="font-size: 12px">
+<pre>
 markers.0.3 <- FindMarkers(sobj, ident.1 = 0, ident.2 = 3, min.pct=0.25)
 (markers.0.3 <- markers.0.3[ markers.0.3$p_val_adj < 0.01, ])
 </pre>
 
 
-<pre style="font-size: 12px">
+<pre>
 ##                p_val  avg_logFC pct.1 pct.2    p_val_adj
 ## mt-Nd4  9.841152e-31 -0.3435626 1.000 0.996 1.278267e-26
 ## mt-Nd1  2.357704e-30 -0.3334831 1.000 1.000 3.062422e-26
@@ -595,23 +595,23 @@ markers.0.3 <- FindMarkers(sobj, ident.1 = 0, ident.2 = 3, min.pct=0.25)
 ## Cd74    3.516725e-09  0.2524194 0.954 0.833 4.567874e-05
 </pre>
 
-<pre style="font-size: 12px">
+<pre>
 markers.0.4 <- FindMarkers(sobj, ident.1 = 0, ident.2 = 4, min.pct=0.25)
 (markers.0.4 <- markers.0.4[ markers.0.4$p_val_adj < 0.01, ])
 </pre>
 
-<pre style="font-size: 12px">
+<pre>
 ##              p_val  avg_logFC pct.1 pct.2    p_val_adj
 ## Sftpc 7.733270e-48  0.2882008 1.000 1.000 1.004474e-43
 ## B2m   6.303101e-10 -0.2691494 0.612 0.868 8.187098e-06
 </pre>
 
-<pre style="font-size: 12px">
+<pre>
 markers.7.12 <- FindMarkers(sobj, ident.1 = 7, ident.2 = 12, min.pct=0.25)
 (markers.7.12 <- markers.7.12[ markers.7.12$p_val_adj < 0.01, ])
 </pre>
 
-<pre style="font-size: 12px">
+<pre>
 ##                 p_val  avg_logFC pct.1 pct.2    p_val_adj
 ## Cxcl14   3.834629e-31 -1.2513125 0.073 0.851 4.980799e-27
 ## Npnt     3.995809e-30 -0.9071321 0.053 0.791 5.190156e-26
@@ -657,7 +657,7 @@ markers.7.12 <- FindMarkers(sobj, ident.1 = 7, ident.2 = 12, min.pct=0.25)
 ## Col14a1  4.228662e-07  0.3345514 0.503 0.119 5.492610e-03
 </pre>
 
-<pre style="font-size: 12px">
+<pre>
 FeaturePlot(sobj, features.plot = c("Dcn", "Cxcl14"), cols.use = c("grey", "blue"), reduction.use = "tsne")
 </pre>
 
@@ -689,7 +689,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 ![](./images/tutorial-seurat-mca_files/unnamed-chunk-26-1.png)
 
-Finally, we run the <code style="background-color:#eaeaea; padding:2px 3px 3px;white-space:pre-wrap">FindAllMarkers</code> function again to account for the new clustering.
+Finally, we run the `FindAllMarkers` function again to account for the new clustering.
 
 
 ```r
