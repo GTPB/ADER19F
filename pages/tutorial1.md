@@ -409,7 +409,7 @@ abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 <details><summary><b>Click Here to see the answer</b></summary>
 
 
-<pre style=>
+<pre>
 highlight <- which(resHTSeqShrunk$padj < 0.01)
 
 plot(resHTSeqShrunk$log2FoldChange, -log10(resHTSeqShrunk$pvalue), xlab="shrunken log2 Fold-change", ylab="-log P-adjusted", pch=20, cex=0.5)
