@@ -1,7 +1,7 @@
-## ADER18S - Analysis of Differential Expression with RNAseq (Second course in 2018)
+## 3DAROC18 - 3C-based data analysis and 3D reconstruction of chromatin folding 
 
-###  Instituto Gulbenkian de Ciência (IGC) - Oeiras, Portugal - October 8<sup>th</sup> - October 12<sup>th</sup> 2018
-Go to the [course oficial website](http://gtpb.igc.gulbenkian.pt/bicourses/2018/ADER18S/)
+###  Instituto Gulbenkian de Ciência (IGC) - Oeiras, Portugal - September 17<sup>th</sup> - September 21<sup>st</sup> 2018
+Go to the [course oficial website](http://gtpb.igc.gulbenkian.pt/bicourses/2018/3DAROC18/)
 
 ---
 
