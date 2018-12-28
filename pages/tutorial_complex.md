@@ -95,7 +95,7 @@ plotMDS(y)
 ![](./images/tutorial_complex_files/unnamed-chunk-2-1.png)
 
 **Question**: What does this global overview tell you?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 The scaling factors are a bit different between samples, but still seem "reasonably" similar. The MDS plot seems to indicate two major axis of separation, where samples are grouped two by two.
 </details>
 <br/>
@@ -129,13 +129,13 @@ metadata
 <br/>
 
 **Question**: Do you see a potential issue in the metadata, regarding the experimental design?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 The cell type is deeply correlated with the sequencing lane. Therefore, we cannot distinguish the technical variation caused by the sequencing lane from the true biological variation. It is well accepted that sequencing lanes have low and well identified technical variation, but it is nonetheless a potential confounder in the experiment.
 </details>
 <br/>
 
 **Question**: How do you interpret the MDS, considering the metadata information?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 The major axis of separation is the cell type, and the second axis is the developmental stage, with a "logical" transition between virgin, pregnant and lactating. Also, this second axis seems to be more relevant in luminal cells. The replicates seem to group together, as expected.
 </details>
 <br/>
@@ -224,7 +224,7 @@ table(topgenes$table$FDR<0.05)
 <br/>
 
 **Question**: For how many different genes did the GLM model consider the variable CellType significant (the differentially expressed genes we're looking for)?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 A whopping 9662 genes! Depending on what we want, we may be stricter with choosing an FDR. Also, we can choose based on the estimated LogFC.
 </details>
 <br/>
@@ -290,7 +290,7 @@ table(topgenes$table$FDR<0.05)
 <br/>
 
 **Question**: How many genes do you get now?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 Even more genes: 11294! 
 </details>
 <br/>
@@ -299,7 +299,7 @@ What about the status of the mouse? In this case, we have three values (virgin, 
 <br/>
 
 **Task**: Make a design matrix to test status, controlling for cell type.
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 <pre>
 design <- model.matrix(~ CellType + Status, data=metadata)
@@ -334,7 +334,7 @@ design
 <br/>
 
 **Question**: If you do a test with this design, what will you be testing?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 By default, the test checks for the last element in the design matrix, which is Statusvirgin. In this case, it will check whether being a virgin (or not) significantly changes baseline gene expression (in this case, controlling for the cell type).
 </details>
 <br/>
@@ -431,7 +431,7 @@ design
 Now, we need to be carefull when choosing the variables to check for significance, because simply choosing the column indicates whether that variable is different from zero (which is true for all expressed genes!). 
 
 **Question**: How many genes you get with the default test for glmQLFtest?
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 <pre>
 y <- DGEList(counts=rawdata[,3:14], genes=rawdata[,1:2])
