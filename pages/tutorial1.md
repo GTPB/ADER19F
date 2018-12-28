@@ -4,12 +4,10 @@ title: Exercise 1 - Using DESeq2 in R
 ---
 
 This document demonstrates how to use *DESeq2* in the *R environment* to perform a differential expression analysis using the the Trapnell datasets as an example. We will first need to tell R what samples are going to be analysed, then run the *DESeq2* pipeline and plot the results of the analysis.
-<br/>
 
 ## Setting up the environment
 
 First we need to make sure that R is running on the same directory where we placed the counts files (the files called trapnell_counts_C1_R1.tab, trapnell_counts_C1_R2.tab, etc...). To do this either type `setwd("path/to/directory")` in the R console, or use the *Files* panel to navigate to the counts directory and then select *More -> Set As Working Directory*.
-<br/>
 
 ## Setting up the count data and metadata
 
@@ -74,7 +72,6 @@ sampleTable
 ## 5 trapnell_counts_C2_R2 trapnell_counts_C2_R2.tab        C2
 ## 6 trapnell_counts_C2_R3 trapnell_counts_C2_R3.tab        C2
 ```
-<br/>
 
 ## Running a differential expression test with DESeq2
 
@@ -172,7 +169,7 @@ table(resHTSeq$padj < 0.05)
 
 **Question**: How many genes have padj less than 0.01? How many genes have nominal p-values less than 0.01?
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 
 <pre>
@@ -288,7 +285,7 @@ head(merged.results)
 
 **Exercise**: When merging the two tables, we lost the ordering by p-value. Can you reorder the `merged.results` table by p.value?
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 
 <pre>
@@ -406,7 +403,7 @@ abline(v=0, h=-log10(0.05), lty="dashed", col="grey")
 
 **Exercise**: Change the commands above to make a **volcano plot** using the shrunken log fold changes instead. Also change the threshold of differential expression to 0.01 and the color of the differentially expressed genes to green.
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 
 
 <pre>
