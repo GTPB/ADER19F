@@ -547,7 +547,7 @@ Some of the clusters appear to be very similar to each other. In particular, clu
 
 **Question**: Based on the t-SNE visualization, and expression of marker genes represented in the above plots, do you think any of the clusters should be combined? If yes, which ones?
 
-<details><summary><b>Click Here to see the answer</b></summary>
+<details><summary>Click Here to see the answer</summary>
 It appears from the expression heatmap that clusters 0, 2, 3 and 4 represent the same population of cells. Clusters 7 and 12 also appear to be very similar, although they are clearly separated on the t-SNE. 
 </details>
 
