@@ -54,7 +54,7 @@ Check the distributions of UMI, gene counts and percent of mitochondrial RNA, an
 
 *__Note__: while in the mouse genome annotation mitochondrial genes have names that start with `mt-` (lowercase), in the human annotation mitochondrial genes start with `MT-` (uppercase).*
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -101,7 +101,7 @@ dim(sobj@data)
 
 ### Exercise 2: Normalize the raw counts
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -115,7 +115,7 @@ sobj <- NormalizeData(sobj, normalization.method = "LogNormalize", scale.factor 
 
 *__Hint__: Aim for a subset of 1,000 to 2,000 genes.* 
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -160,7 +160,7 @@ VlnPlot(sobj, features.plot = highest.mean, point.size.use=0.5)
 
 After obtaining and visualizing the PCA, determine the number of PCs you are going to use for further analysis.
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -228,7 +228,7 @@ VizPCA(sobj, pcs.use = 1:15, do.balanced = TRUE)
 
 Try to select an appropriate value for the clustering `resolution` parameter, and the `perplexity` parameter of the t-SNE.
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -248,7 +248,7 @@ TSNEPlot(sobj, do.label = TRUE)
 
 Examine the top markers for all clusters, and determine if any of the clusters seem to be very similar. If this is the case, group similar clusters together, and repeat the marker gene discovery on the new clusters.
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
@@ -296,7 +296,7 @@ Use the `VlnPlot` and `FeaturePlot` functions to examine the expresssion of the 
 
 <br/>
 
-<details><summary><b>Click Here to see one solution</b></summary>
+<details><summary>Click Here to see one solution</summary>
 
 
 <pre>
