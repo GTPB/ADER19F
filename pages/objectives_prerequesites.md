@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Learning Objectives and Course Pre-requesites
+title: Learning Objectives and Course Pre-requisites
 ---
 
 # Learning Objectives
