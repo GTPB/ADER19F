@@ -166,7 +166,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ---
 
-### [Learning objectives and Course Pre-requisites](pages/objectives_prerequesites.md)
+### [Learning objectives and Course Pre-requisites](pages/objectives_prerequisites.md)
 
 ### [Instructors](pages/instructors.md)
 
