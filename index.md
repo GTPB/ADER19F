@@ -163,7 +163,9 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		  
       What can we get from enrichment analysis results
       Using functional enrichment analysis with real lists of genes
+
 <br/>
+
 [**Slides (pdf)**](./assets/ADER18%20-%20Functional%20Enrichment%20Analysis.pdf)
 
 ---
