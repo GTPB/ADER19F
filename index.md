@@ -165,6 +165,7 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
       Using functional enrichment analysis with real lists of genes
 <br/>
 [**Slides (pdf)**](./assets/)
+
 ---
 
 ### [Learning Objectives and Course Pre-requisites](pages/objectives_prerequisites.md)
