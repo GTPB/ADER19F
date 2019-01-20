@@ -13,6 +13,8 @@ This introductory course covers practical aspects of the **analysis of different
 ## Target Audience
 Life Scientists who want to be able to use NGS data (RNAseq) to infer genes differentially expressed between different conditions. Computational researchers that wish to get acquainted with the concepts and methodologies used in RNAseq are also welcome.
 
+---
+
 ## Detailed Program
 
 ### Day 1
@@ -161,10 +163,12 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 		  
       What can we get from enrichment analysis results
       Using functional enrichment analysis with real lists of genes
+<br/>
+[**Slides (pdf)**](./assets/)
 
 ---
 
-### [Learning objectives and Pre-requisites](pages/objectives_prerequesites.md)
+### [Learning Objectives and Course Pre-requisites](pages/objectives_prerequisites.md)
 
 ### [Instructors](pages/instructors.md)
 

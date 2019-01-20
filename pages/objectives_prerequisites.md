@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Learning Objectives and Pre-requesites
+title: Learning Objectives and Course Pre-requisites
 ---
 
 # Learning Objectives
@@ -22,7 +22,7 @@ For this, we are providing small example datasets and exercises that participant
 
 <br/>
 
-# Pre-requisites
+# Course Pre-requisites
 
 Familiarity with elementary statistics and a few basics of scripting in R will be helpful.
 
