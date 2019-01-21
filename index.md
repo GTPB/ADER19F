@@ -15,7 +15,13 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ---
 
-## Detailed Program
+## Course Documentation
+
+**Note -** All the datasets used fot this training course is available in the following button. You need to unzip this file and follow the instructions throughout the documentation.
+
+[**Download ADER18S Datasets**](https://github.com/GTPB/ADER18S/archive/data.zip){: .btn} <sub><i>File Size: 482,6MB</i></sub>
+
+<br/>
 
 ### Day 1
 
@@ -172,4 +178,4 @@ Life Scientists who want to be able to use NGS data (RNAseq) to infer genes diff
 
 ---
 
-The source for this course webpage is [on github](https://github.com/maccardoso/ADER18S).
+The source for this course webpage is [on github](https://github.com/GTPB/ADER18S).
