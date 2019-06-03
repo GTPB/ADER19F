@@ -1,7 +1,7 @@
-## ADER18S - Analysis of Differential Expression with RNAseq (Second course in 2018)
+## ADER19F - Analysis of Differential Expression with RNAseq (First course in 2019)
 
-###  Instituto Gulbenkian de Ciência (IGC) - Oeiras, Portugal - October 8<sup>th</sup> - October 12<sup>th</sup> 2018
-Go to the [course oficial website](http://gtpb.igc.gulbenkian.pt/bicourses/2018/ADER18S/)
+###  Instituto Gulbenkian de Ciência (IGC) - Oeiras, Portugal - June 3<sup>rd</sup> - June 7<sup>th</sup> 2019
+Go to the [course oficial website](http://gtpb.igc.gulbenkian.pt/bicourses/2019/ADER19F/)
 
 ---
 
