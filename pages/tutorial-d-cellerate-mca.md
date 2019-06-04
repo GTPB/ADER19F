@@ -8,6 +8,8 @@ In this tutorial we will perform the steps necessary to go from the raw expressi
 
 ## D-cellerate
 
+![](images/dc/dc.png)
+
 One of the most popular and widely used packages for scRNA-seq analysis is called *Seurat* (https://satijalab.org/seurat/). It is an *R* package that contains functions to perform filtering, quality control, normalization, dimensionality reduction, clustering and differential expression analysis of scRNA-seq. However, its use requires some knowledge of the *R* programming language, and thus can be difficult for non-experts.
 
 To alieviate this problem, we are developing a web-application that exposes most *Seurat* functions in a user-friendly and interactive way.
@@ -33,7 +35,7 @@ In the **Import Data** section, select **Built-in dataset** and choose the ""*mc
 
 Move to the **Filter** section by selecting it in the left pane. On the right we find the **barcode plot** that shows the total number of UMI counts per barcode in the raw UMI matrix (as we have seen in the *Cellranger* analysis).
 
-![](images/barcode-plot.png)
+![](images/dc/barcode-plot.png)
 
 **Question**: What can you conclude from the above representation? How many of the top barcodes would you keep for further analysis?
 
