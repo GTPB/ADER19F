@@ -46,5 +46,20 @@ There appears to be a drop in the total number of UMI counts after the first 1,0
 
 In the original study, taking into account the full set of 91 samples, the authors selected a threshold of 500 UMI counts to select barcodes for further analysis. Thus we are left with 2684 cells for further analysis.
 
+</details>
+
+To discard barcodes with less than 500 total UMI counts, enter **500** in the **Min UMI** field on the left pane. The barcode plot will display the cutoff line for barcode selection.
+
+We can also filter barcodes based on the number of genes detected (i.e. the number of genes with at least one count). Enter **50** in the **Min Genes** field.
+
+Next we inspect the distributions of total counts per cell (nUMI), and number of genes detected per cell (nGene). Click on the **Distributions** tab.
+
+**Question:** Examine the distributions. What cells, if any, would you remove from the analysis?
+
+<details><summary><b>Click Here to see the answer</b></summary>
+
+For most barcodes we are able to detect approximately 500 genes. Barcodes with a much higher than average number of detected genes may indicate a multiplet (multiple cells in the same droplet), so we will also remove barcodes with more than 1500 genes detected.
 
 </details>
+
+Set **Max Genes** to 1500.
