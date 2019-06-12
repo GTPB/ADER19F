@@ -81,7 +81,7 @@ A few cells display higher than 10% abundance of mitochondrial RNA.
 
 <details><summary><b>Click Here to see the answer</b></summary>
 
-A high percentage of mitochondrial RNA ususally indicates a dead or burst cell, as cytoplasmic RNA is lost while mitochondrial RNA remains protected.
+A high percentage of mitochondrial RNA usually indicates a dead or burst cell, as cytoplasmic RNA is lost while mitochondrial RNA remains protected.
 
 </details>
 
@@ -95,7 +95,7 @@ Normalization of scRNA-seq is the focus of active research, and many complex tec
 
 # Dimensionality reduction
 
-Because of the high-dimensionality of scRNA-seq datasets, it is common to reduce this dimensionalty using various techniques. This will not only make computations faster (or in some cases *feasable*), as well as reduce noise in the data.
+Because of the high-dimensionality of scRNA-seq datasets, it is common to reduce this dimensionality using various techniques. This will not only make computations faster (or in some cases *feasable*), as well as reduce noise in the data.
 
 Switch to the **Reduce Dimensions** tab.
 
@@ -137,13 +137,13 @@ There is a drop in the percentage of variance explained after PC15 and the plot 
 
 </details>
 
-Below the *scree plot* scatterplots of the principal component analysis can be visualized. Each point represents the loadings of two component of a single cell. Immediately we notice that cells are well spread out, which indicates an heterogenous cell population.
+Below the *scree plot* scatterplots of the principal component analysis can be visualized. Each point represents the loadings of two component of a single cell. Immediately we notice that cells are well spread out, which indicates an heterogeneous cell population.
 
 We will re-examine these plots at a further time.
 
 ## t-distributed Stochastic Neighbor Embedding
 
-t-distributed stochastic neighbor embedding (t-SNE) is a nonlinear dimensionality reduction often used in scRNA-seq analyses to visualize cell subpolulations. It is used to embed high dimensional scRNA-seq expressions in a 2D or 3D plot. Its main advantage compared to PCA is its ability to detect structures in the data that cannot be found by simple rotations (see [t-SNE: What the hell is it?](https://constantamateur.github.io/2018-01-02-tSNE/)).
+t-distributed stochastic neighbor embedding (t-SNE) is a nonlinear dimensionality reduction often used in scRNA-seq analyses to visualize cell subpopulations. It is used to embed high dimensional scRNA-seq expressions in a 2D or 3D plot. Its main advantage compared to PCA is its ability to detect structures in the data that cannot be found by simple rotations (see [t-SNE: What the hell is it?](https://constantamateur.github.io/2018-01-02-tSNE/)).
 
 Although useful to visualize single cell data, care should be taken when interpreting its results:
 
@@ -194,11 +194,11 @@ Each seed will produce a completely different arrangement of t-SNE clusters. How
 
 Now move to the **Cluster** section.
 
-Because of the high dimensionality of scRNA-seq datasets, clustering algorithms face a number of challenges, such as high computation times and memory requirements. To alieviate these problems, one solution is to perform the clustering using the cells PCA scores instead of the full expression matrix, where each principal component represents the signal of a correlated set of genes. Based on the analysis above, we are going to proceed using 20 PCs.
+Because of the high dimensionality of scRNA-seq datasets, clustering algorithms face a number of challenges, such as high computation times and memory requirements. To alleviate these problems, one solution is to perform the clustering using the cells PCA scores instead of the full expression matrix, where each principal component represents the signal of a correlated set of genes. Based on the analysis above, we are going to proceed using 20 PCs.
 
 `Seurat` uses a graph based clustering algorithm where the `resolution` parameter influences the granularity of the clusters, with higher values producing more and smaller clusters.
 
-On this dataset, using 20 PCs and a resultion of 0.8 produces 14 clusters of various sizes.
+On this dataset, using 20 PCs and a resolution of 0.8 produces 14 clusters of various sizes.
 
 ![](images/dc/cluster1.png)
 
@@ -230,7 +230,7 @@ The clustering results fit very well with the t-SNE projection. This is an indic
 
 <details><summary><b>Click Here to see the answer</b></summary>
 
-Smaller values of resultion produce larger clusters, while high values produce a more refined clustering. Sometimes this results in *over-clustering* of the cells.
+Smaller values of resolution produce larger clusters, while high values produce a more refined clustering. Sometimes this results in *over-clustering* of the cells.
 
 </details>
 
@@ -300,7 +300,7 @@ Below is figure 4A from the mouse cell atlas.
 
 ![](images/dc/mca.png)
 
-In the alternative excercise, where we used *Seurat* directly in *RStudio* we compared the results we obtained with the assigned cell types in the original study.
+In the alternative exercise, where we used *Seurat* directly in *RStudio* we compared the results we obtained with the assigned cell types in the original study.
 
 The figure below shows the t-SNE projection we obtained, with cells colored according to the clusters identified in the original study, showing we were able to reproduce quite accurately the results of the study.
 
