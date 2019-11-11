@@ -6,7 +6,7 @@ description: Introductory course that covers practical aspects of the analysis o
 ---
 ![](./pages/images/Entry_index_image.jpg)
 
-## Course Description
+## Course Description sdgh
 This introductory course covers practical aspects of the **analysis of differential gene expression by RNAseq**, from planning the gathering of sequence data to the generation of tables of differentially expressed gene lists and visualization of results. For this edition of the course, we will also explore some specificities of **single-cell RNAseq data analysis**. Towards the end, we will cover some of the initial steps of secondary analysis, such as **functional enrichment** of the obtained gene lists. Participants will first start learning the concepts using small example datasets, and then will apply the learned concepts in the training room using real sized examples. At the end of the course, participants should be able to autonomously apply most of the learned methods to their own data.
 
 
