@@ -1,13 +1,20 @@
 ---
 layout: page
 title: Introduction to edgeR GLMs
+schemadotorg:
+  "@context": http://schema.org/
+  "@type": CreativeWork
+  "genre": TrainingMaterial
+  isPartOf:
+      url: "https://gtpb.github.io/ADER19F/"
+      name: "ADER19F - Analysis of Differential Expression with RNAseq (First course in 2019)"
 ---
 
 ## Suggested solution - Introduction to edgeR GLMs
 
 Here we demonstrate the use of *edgeR* to perform a differential expression analysis using data from Tuch *et al.* ([PLOS](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009317)) as detailed in the edgeR manual.
 
-The data is a set of RNA-seq samples of oral squamous cell carcinomas and matched normal tissue from three patients that were previously quantified into raw counts. 
+The data is a set of RNA-seq samples of oral squamous cell carcinomas and matched normal tissue from three patients that were previously quantified into raw counts.
 
 We will use *edgeR* to do a differential expression analysis of Tumor vs Non-Tumor samples. We will start with a simple pairwise comparison of the Tumor and Non-Tumor samples, and then repeat the analysis adding the patient pairing information to the model design.
 
@@ -67,7 +74,7 @@ summary(rawdata)
 ##  Mean   :  1186   Mean   :   2162   Mean   :  1394  
 ##  3rd Qu.:   828   3rd Qu.:   1479   3rd Qu.:  1100  
 ##  Max.   :365430   Max.   :1675945   Max.   :633871  
-## 
+##
 ```
 
 For convenience, we separate the table in two: one containing the counts for all samples (columns 2 to 7), and another containing only the list of gene names (column 1).
@@ -210,7 +217,7 @@ write.table(result, file = "edgeR_Tuch_Tumor_vs_NonTumor.csv", sep="\t", row.nam
 
 Recall that tumor and non-samples were collected from 3 patients. Until now we have ignored this information in our design. Here we repeat the analysis by adding the sample pairing information to our model design, that will allow us to adjust for differences between patients.
 
-For this we only have to change the design definition. We create a new `Patient` variable, and then include it as a blocking factor in the GLM design. 
+For this we only have to change the design definition. We create a new `Patient` variable, and then include it as a blocking factor in the GLM design.
 
 
 ```r
@@ -236,7 +243,7 @@ design
 ## attr(,"contrasts")
 ## attr(,"contrasts")$Patient
 ## [1] "contr.treatment"
-## 
+##
 ## attr(,"contrasts")$Tissue
 ## [1] "contr.treatment"
 ```
@@ -276,4 +283,3 @@ write.table(result_paired, file = "edgeR_Tuch_Tumor_vs_NonTumor_paired.csv", sep
 ### Back
 
 Back to [previous page](tutorial_complex.md/#solution).
-

@@ -1,6 +1,13 @@
 ---
 layout: page
 title: Exercise 1 - Using DESeq2 in R
+schemadotorg:
+  "@context": http://schema.org/
+  "@type": CreativeWork
+  "genre": TrainingMaterial
+  isPartOf:
+      url: "https://gtpb.github.io/ADER19F/"
+      name: "ADER19F - Analysis of Differential Expression with RNAseq (First course in 2019)"
 ---
 
 This document demonstrates how to use *DESeq2* in the *R environment* to perform a differential expression analysis using the the Trapnell datasets as an example. We will first need to tell R what samples are going to be analysed, then run the *DESeq2* pipeline and plot the results of the analysis.
@@ -131,8 +138,8 @@ head(resHTSeq)
 ```
 
 ```
-## log2 fold change (MLE): condition C2 vs C1 
-## Wald test p-value: condition C2 vs C1 
+## log2 fold change (MLE): condition C2 vs C1
+## Wald test p-value: condition C2 vs C1
 ## DataFrame with 6 rows and 6 columns
 ##               baseMean log2FoldChange      lfcSE       stat     pvalue
 ##              <numeric>      <numeric>  <numeric>  <numeric>  <numeric>
@@ -162,8 +169,8 @@ table(resHTSeq$padj < 0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ##  6322   267
 ```
 
@@ -177,8 +184,8 @@ table(resHTSeq$padj < 0.01)
 </pre>
 
 <pre>
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ##  6330   259
 </pre>
 
@@ -187,8 +194,8 @@ table(resHTSeq$pvalue < 0.01)
 </pre>
 
 <pre>
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ##  9893   315
 </pre>
 
@@ -196,7 +203,7 @@ table(resHTSeq$pvalue < 0.01)
 
 ---
 
-We sort this table by p-value (smaller p-values on top), and save it to a file so that we can later import it into Excel. 
+We sort this table by p-value (smaller p-values on top), and save it to a file so that we can later import it into Excel.
 
 
 ```r
@@ -205,7 +212,7 @@ orderedRes <- resHTSeq[ order(resHTSeq$padj), ]
 write.csv(as.data.frame(orderedRes), file="trapnell_C1_VS_C2.DESeq2.csv")
 ```
 
-We can also retrieve and save a table of normalized counts. 
+We can also retrieve and save a table of normalized counts.
 
 
 ```r
@@ -358,7 +365,7 @@ hist(resHTSeq$pvalue, breaks=0:50/50, xlab="p value", main="Histogram of nominal
 
 ### MA-plot
 
-To make an (unshrunken) **MA-plot**, that displays the relationship between a genes' mean expression and its fold-change between experimental conditions, type the following in the R console. 
+To make an (unshrunken) **MA-plot**, that displays the relationship between a genes' mean expression and its fold-change between experimental conditions, type the following in the R console.
 
 
 ```r
@@ -423,7 +430,7 @@ abline(v=0, h=-log10(0.01), lty="dashed", col="grey")
 
 ### Principal component analysis (PCA)
 
-*DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression. 
+*DESeq2* provides a function to make a Principal Component Analysis (PCA) of the count data. The *DESeq2* [vignette](http://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-data-transformations) recommends using transformed counts as input to the PCA routines, as these transformations remove the dependence of the sample-to-sample variance on the genes' mean expression.
 
 One such transformations is the variance stabilizing transformation (VST). You can type `?varianceStabilizingTransformation` to learn more about this. To compare samples in an manner unbiased by prior information (i.e. the experimental condition), the `blind` argument is set to TRUE.
 
@@ -446,9 +453,9 @@ plotPCA(transformed.vsd)
 
 ### Sample-to-sample correlation heatmap
 
-Another common visualization of high-throughput datasets is a clustered heatmap of sample-to-sample distances (or correlations). This visualization groups togheter the samples that are more similar to each other. 
+Another common visualization of high-throughput datasets is a clustered heatmap of sample-to-sample distances (or correlations). This visualization groups togheter the samples that are more similar to each other.
 
-To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the `heatmap` (from the base R package) to cluster and display the heatmap. 
+To make this visualization we first calculate a matrix of distances between all pairs of samples. Then we use the `heatmap` (from the base R package) to cluster and display the heatmap.
 
 
 ```r
@@ -456,7 +463,7 @@ dists <- as.matrix(dist(t(normCounts)))
 heatmap(dists, main="Clustering of sample-to-sample distances", scale="none")
 ```
 <br/>
-  
+
 ![](./images/tutorial1_files/unnamed-chunk-22-1.png)
 
 We can also use pearson (or spearman) correlations as a distance metric. This is more robust than simple euclidean distances, and has the advantage that we can even use the raw (non-normalized) counts as input. It is generally a good idea to log transform the counts first.
@@ -464,7 +471,7 @@ We can also use pearson (or spearman) correlations as a distance metric. This is
 
 ```r
 log10_rawCounts <- log10(counts(ddsHTSeq) + 1)
-  
+
 dists <- 1 - cor(log10_rawCounts, method="pearson")
 heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale="none")
 ```
@@ -476,7 +483,7 @@ heatmap(dists, main="Clustering of sample-to-sample pearson correlations", scale
 
 ## Other visualizations
 
-Here we plot the relative expression of all differentially expressed genes in the 6 samples. This figure is useful to visualize the differences in expression between samples. 
+Here we plot the relative expression of all differentially expressed genes in the 6 samples. This figure is useful to visualize the differences in expression between samples.
 
 
 ```r
@@ -484,25 +491,25 @@ library(gplots)
 ```
 
 ```
-## 
+##
 ## Attaching package: 'gplots'
 ```
 
 ```
 ## The following object is masked from 'package:IRanges':
-## 
+##
 ##     space
 ```
 
 ```
 ## The following object is masked from 'package:S4Vectors':
-## 
+##
 ##     space
 ```
 
 ```
 ## The following object is masked from 'package:stats':
-## 
+##
 ##     lowess
 ```
 
@@ -510,8 +517,8 @@ library(gplots)
 diffgenes <- rownames(resHTSeq)[ which(resHTSeq$padj < 0.05) ]
 diffcounts <- normCounts[ diffgenes, ]
 
-heatmap.2(diffcounts, 
-          labRow = "", 
+heatmap.2(diffcounts,
+          labRow = "",
           trace = "none", density.info = "none",
           scale = "row",
           distfun = function(x) as.dist(1 - cor(t(x))))
@@ -535,8 +542,8 @@ log10_normCounts <- log10(normCounts + 1)
 values <- log10_normCounts[ select, ]
 
 pheatmap(values,
-         scale = "none", 
-         cluster_rows = FALSE, 
+         scale = "none",
+         cluster_rows = FALSE,
          cluster_cols = FALSE,
          fontsize_row = 8,
          annotation_names_col = FALSE,
@@ -561,11 +568,11 @@ sessionInfo()
 ## R version 3.4.4 (2018-03-15)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 16.04.4 LTS
-## 
+##
 ## Matrix products: default
 ## BLAS: /usr/lib/libblas/libblas.so.3.6.0
 ## LAPACK: /usr/lib/lapack/liblapack.so.3.6.0
-## 
+##
 ## locale:
 ##  [1] LC_CTYPE=pt_PT.UTF-8       LC_NUMERIC=C              
 ##  [3] LC_TIME=pt_PT.UTF-8        LC_COLLATE=en_US.UTF-8    
@@ -573,11 +580,11 @@ sessionInfo()
 ##  [7] LC_PAPER=pt_PT.UTF-8       LC_NAME=C                 
 ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
 ## [11] LC_MEASUREMENT=pt_PT.UTF-8 LC_IDENTIFICATION=C       
-## 
+##
 ## attached base packages:
-## [1] parallel  stats4    stats     graphics  grDevices utils     datasets 
+## [1] parallel  stats4    stats     graphics  grDevices utils     datasets
 ## [8] methods   base     
-## 
+##
 ## other attached packages:
 ##  [1] pheatmap_1.0.8             gplots_3.0.1              
 ##  [3] DESeq2_1.18.1              SummarizedExperiment_1.8.1
@@ -585,7 +592,7 @@ sessionInfo()
 ##  [7] Biobase_2.38.0             GenomicRanges_1.30.1      
 ##  [9] GenomeInfoDb_1.14.0        IRanges_2.12.0            
 ## [11] S4Vectors_0.16.0           BiocGenerics_0.24.0       
-## 
+##
 ## loaded via a namespace (and not attached):
 ##  [1] bit64_0.9-7            splines_3.4.4          gtools_3.5.0          
 ##  [4] Formula_1.2-2          latticeExtra_0.6-28    blob_1.1.0            

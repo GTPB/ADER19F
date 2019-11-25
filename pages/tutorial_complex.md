@@ -1,14 +1,21 @@
 ---
 layout: page
 title: Exercise 2 - Using edgeR in R
+schemadotorg:
+  "@context": http://schema.org/
+  "@type": CreativeWork
+  "genre": TrainingMaterial
+  isPartOf:
+      url: "https://gtpb.github.io/ADER19F/"
+      name: "ADER19F - Analysis of Differential Expression with RNAseq (First course in 2019)"
 ---
 
 ## Introduction
 
-Here we will explore some of the potential of *edgeR* to perform differential expression analysis in more complex settings. We will be using data from [Fu et al., 2015](https://www.ncbi.nlm.nih.gov/pubmed/25730472). You can obtain the raw data, and some processed data like gene counts from [here](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450). For your convenience, these have already been provided 
+Here we will explore some of the potential of *edgeR* to perform differential expression analysis in more complex settings. We will be using data from [Fu et al., 2015](https://www.ncbi.nlm.nih.gov/pubmed/25730472). You can obtain the raw data, and some processed data like gene counts from [here](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE60450). For your convenience, these have already been provided
 
 
-In this study the authors studied evolution of gene expression during lactogenesis. The data is a set of RNA-seq samples of two different tissues (basal and luminal) in the mammary gland, at three different time points (virgin, pregnant and lactating). 
+In this study the authors studied evolution of gene expression during lactogenesis. The data is a set of RNA-seq samples of two different tissues (basal and luminal) in the mammary gland, at three different time points (virgin, pregnant and lactating).
 <br/>
 
 ## Load the count data
@@ -81,7 +88,7 @@ y$samples
 # at least 1 CPM in at least 2 samples
 # isexpr <- rowSums(cpm(y)>1) >= 2
 # y <- y[isexpr, , keep.lib.sizes=FALSE]
-# This reduces the number of necessary tests 
+# This reduces the number of necessary tests
 
 #you can get normalized counts like this:
 normcounts<-cpm(y, normalized.lib.sizes = T)
@@ -179,7 +186,7 @@ design
 #rownames(design) <- colnames(y)
 ```
 
-Here, we have a single variable with two values. Our GLM model will therefore be composed of a binary variable, which is 1 when the cell type is "L" and 0 when the cell type is "B". 
+Here, we have a single variable with two values. Our GLM model will therefore be composed of a binary variable, which is 1 when the cell type is "L" and 0 when the cell type is "B".
 
 The next step in edgeR is to estimate the dispersion of the gene expression. As we discussed before, it makes use of some assumptions, such as that most genes should not be differentially expressed, and dispersion should not be dependent on the relative expression of the gene.
 
@@ -195,15 +202,15 @@ plotBCV(y)
 ![](./images/tutorial_complex_files/unnamed-chunk-5-1.png)
 
 Next, edgeR fits the GLM model for each gene (like we fit linear models using regression and least squeares, but with more sophisticated iterative methods).
- 
+
 The differential expression test consists basically in identifying if a specific chosen variable (or combinations of variables) have a significant role in the fitting of the GLM. For this, it also takes in consideration the dispersion estimates calculated before.
 
 By default, the variable that is checked for significance is the last in the design matrix. In this case, there is only one. We're testing if being a specific CellType has any bearing in gene expression. For the genes where that's the case, the gene expression in the samples of one cell type must be significantly different than in the samples for the other cell type (which is what we want).
 
 
 ```r
-#The recommended fitting procedure in edgeR returns 
-# Quasi-F as statistic for significance in the GLM 
+#The recommended fitting procedure in edgeR returns
+# Quasi-F as statistic for significance in the GLM
 fit <- glmQLFit(y, design, robust=TRUE)
 qlt <- glmQLFTest(fit)
 
@@ -217,8 +224,8 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 17517  9662
 ```
 <br/>
@@ -263,12 +270,12 @@ design
 ## attr(,"contrasts")
 ## attr(,"contrasts")$Status
 ## [1] "contr.treatment"
-## 
+##
 ## attr(,"contrasts")$CellType
 ## [1] "contr.treatment"
 ```
 
-In this case, when estimating the dispersion and fitting the GLM, it will also consider the status. 
+In this case, when estimating the dispersion and fitting the GLM, it will also consider the status.
 
 
 
@@ -283,19 +290,19 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 15885 11294
 ```
 <br/>
 
 **Question**: How many genes do you get now?
 <details><summary>Click Here to see the answer</summary>
-Even more genes: 11294! 
+Even more genes: 11294!
 </details>
 <br/>
 
-What about the status of the mouse? In this case, we have three values (virgin, pregnant, lactating). 
+What about the status of the mouse? In this case, we have three values (virgin, pregnant, lactating).
 <br/>
 
 **Task**: Make a design matrix to test status, controlling for cell type.
@@ -326,7 +333,7 @@ design
 ## attr(,"contrasts")
 ## attr(,"contrasts")$CellType
 ## [1] "contr.treatment"
-## 
+##
 ## attr(,"contrasts")$Status
 ## [1] "contr.treatment"
 </pre>
@@ -349,19 +356,19 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 14869 12310
 ```
 
 
-**Note**: In the previous test, since lactating is mutually exclusive from pregnant and virgin (therefore, dependent), the last test is equivalent to ask for any gene differentially expressed between any of the status, controlling for cell type. 
+**Note**: In the previous test, since lactating is mutually exclusive from pregnant and virgin (therefore, dependent), the last test is equivalent to ask for any gene differentially expressed between any of the status, controlling for cell type.
 
 The problem with this setting is that it starts getting complicated to do certain tests. For example, how do you test for genes differentially expressed between virgin and pregnant? Moreover, interpreting the meaning of the baseline gets complex, as it is a mixture of several factors.
 
-**Note**: You can always make a differential analysis test using just the samples you want to compare. Adding more samples and variables into the same model allow you to control for these variables, which you would otherwise ignore. 
+**Note**: You can always make a differential analysis test using just the samples you want to compare. Adding more samples and variables into the same model allow you to control for these variables, which you would otherwise ignore.
 
-Making the combinations explicit in the model make it probably easier to interpret. 
+Making the combinations explicit in the model make it probably easier to interpret.
 
 
 ```r
@@ -428,7 +435,7 @@ design
 ## [1] "contr.treatment"
 ```
 
-Now, we need to be carefull when choosing the variables to check for significance, because simply choosing the column indicates whether that variable is different from zero (which is true for all expressed genes!). 
+Now, we need to be carefull when choosing the variables to check for significance, because simply choosing the column indicates whether that variable is different from zero (which is true for all expressed genes!).
 
 **Question**: How many genes you get with the default test for glmQLFtest?
 <details><summary>Click Here to see the answer</summary>
@@ -444,8 +451,8 @@ table(topgenes$table$FDR<0.05)
 </pre>
 
 <pre>
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ##  5788 21391
 </pre>
 </details>
@@ -466,8 +473,8 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 20374  6805
 ```
 
@@ -476,8 +483,8 @@ Like before, you can choose different variables to test simultaneously. For exam
 
 ```r
 #ANOVA-Like for L samples (it tests if any of these combinations has logFC != 0)
-con <- makeContrasts(cell_statusL.pregnant - cell_statusL.lactate, 
-                     cell_statusL.virgin - cell_statusL.lactate, 
+con <- makeContrasts(cell_statusL.pregnant - cell_statusL.lactate,
+                     cell_statusL.virgin - cell_statusL.lactate,
                      cell_statusL.virgin - cell_statusL.pregnant, levels=design)
 anov <- glmQLFTest(fit, contrast=con)
 topgenes<-topTags(anov, n=dim(rawdata)[[1]])
@@ -485,8 +492,8 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 16156 11023
 ```
 
@@ -534,7 +541,7 @@ design
 ## attr(,"contrasts")
 ## attr(,"contrasts")$CellType
 ## [1] "contr.treatment"
-## 
+##
 ## attr(,"contrasts")$Status
 ## [1] "contr.treatment"
 ```
@@ -549,15 +556,15 @@ table(topgenes$table$FDR<0.05)
 ```
 
 ```
-## 
-## FALSE  TRUE 
+##
+## FALSE  TRUE
 ## 18637  8542
 ```
 
 
 
 **Task**: Using the code above as an example, try to replicate the paired Tumour/Normal analysis from Tuch et al, using edgeR. You can find the counts table in the complex folder.
- 
+
 [-> Suggested solution](tutorial2.md)<a id="solution"></a>.
 
 
@@ -566,6 +573,3 @@ table(topgenes$table$FDR<0.05)
 ### Back
 
 Back to [previous page](L08.md#tutorial_complex).
-
-
-

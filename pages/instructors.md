@@ -2,6 +2,13 @@
 layout: page
 title: Instructors
 description: ADER19F Course instructors description
+schemadotorg:
+  "@context": http://schema.org/
+  "@type": CreativeWork
+  "genre": TrainingMaterial
+  isPartOf:
+      url: "https://gtpb.github.io/ADER19F/"
+      name: "ADER19F - Analysis of Differential Expression with RNAseq (First course in 2019)"
 ---
 
 ## Daniel Sobral
